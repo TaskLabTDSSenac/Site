@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TaskLab · ambiente de aprendizagem em testes de software.">
+    <title>Entrar · TaskLab</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="intro">
+        <a class="brand" href="index.html" aria-label="TaskLab, início"><span class="brand-icon" aria-hidden="true">✓</span>TaskLab</a>
+        <div class="intro-copy">
+          <span class="eyebrow">Aprender. Praticar. Evoluir.</span>
+          <h1>Seu próximo passo<br>começa aqui.</h1>
+          <p>Seu ambiente de aprendizagem em testes de software. Um passo de cada vez.</p>
+          <div class="steps" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="intro-footer">TaskLab · Laboratório de aprendizagem</div>
+      </aside>
+      <main class="form-area">
+        <section class="card" aria-labelledby="title">
+          <h2 id="title">Boas-vindas de volta</h2>
+          <p class="muted">Entre com sua conta para continuar.</p>
+          <div id="message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+          <form>
+            <div class="form-field">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" required maxlength="255" autocomplete="email" placeholder="voce@exemplo.com">
+            </div>
+            <div class="form-field">
+              <label for="password">Senha</label>
+              <div class="password-wrap">
+                <input id="password" name="password" type="password" required minlength="1" maxlength="128" autocomplete="current-password" >
+                <button class="toggle" type="button" data-toggle-password="password" aria-controls="password" aria-pressed="false" aria-label="Mostrar ou ocultar senha">Mostrar</button>
+              </div>
+            </div>
+            <button class="primary" type="submit">Entrar</button>
+          </form>
+          <p class="form-footer">Ainda não tem uma conta… <a href="cadastro.html">Criar conta</a></p>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="js/login.js"></script>
+  </body>
+</html>

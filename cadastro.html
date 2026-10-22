@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TaskLab · ambiente de aprendizagem em testes de software.">
+    <title>Criar conta · TaskLab</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="intro">
+        <a class="brand" href="index.html" aria-label="TaskLab, início"><span class="brand-icon" aria-hidden="true">✓</span>TaskLab</a>
+        <div class="intro-copy">
+          <span class="eyebrow">Aprender. Praticar. Evoluir.</span>
+          <h1>Aprendizado na prática.<br>Desde o primeiro acesso.</h1>
+          <p>Seu ambiente de aprendizagem em testes de software. Um passo de cada vez.</p>
+          <div class="steps" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="intro-footer">TaskLab · Laboratório de aprendizagem</div>
+      </aside>
+      <main class="form-area">
+        <section class="card" aria-labelledby="title">
+          <h2 id="title">Crie sua conta</h2>
+          <p class="muted">Tudo pronto para começar sua jornada?</p>
+          <div id="message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+          <form>
+            <div class="form-field">
+              <label for="name">Nome</label>
+              <input id="name" name="name" required maxlength="150" autocomplete="name" placeholder="Como podemos chamar você?">
+            </div>
+            <div class="form-field">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" required maxlength="255" autocomplete="email" placeholder="voce@exemplo.com">
+            </div>
+            <div class="form-field">
+              <label for="password">Senha</label>
+              <div class="password-wrap">
+                <input id="password" name="password" type="password" required minlength="8" maxlength="128" autocomplete="new-password" aria-describedby="password-hint">
+                <button class="toggle" type="button" data-toggle-password="password" aria-controls="password" aria-pressed="false" aria-label="Mostrar ou ocultar senha">Mostrar</button>
+              </div>
+              <small id="password-hint" class="hint">Use entre 8 e 128 caracteres.</small>
+            </div>
+            <div class="form-field">
+              <label for="confirm_password">Confirmação da senha</label>
+              <div class="password-wrap">
+                <input id="confirm_password" name="confirm_password" type="password" required minlength="8" maxlength="128" autocomplete="new-password" >
+                <button class="toggle" type="button" data-toggle-password="confirm_password" aria-controls="confirm_password" aria-pressed="false" aria-label="Mostrar ou ocultar confirmação da senha">Mostrar</button>
+              </div>
+            </div>
+            <button class="primary" type="submit">Criar conta</button>
+          </form>
+          <p class="form-footer">Já tem uma conta… <a href="index.html">Voltar ao login</a></p>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="js/register.js"></script>
+  </body>
+</html>

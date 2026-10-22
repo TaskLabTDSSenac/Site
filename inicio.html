@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TaskLab · ambiente de aprendizagem em testes de software.">
+    <title>Minha conta · TaskLab</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="TaskLab, início"><span class="brand-icon" aria-hidden="true">✓</span>TaskLab</a>
+      <button id="logout" class="secondary" type="button">Sair</button>
+    </header>
+    <main class="workspace">
+      <div id="loading" class="loading" role="status" aria-live="polite">Validando sua sessão…</div>
+      <div id="message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+      <button id="retry" class="secondary" type="button" hidden>Tentar novamente</button>
+      <section id="account" hidden>
+        <span class="eyebrow">Minha conta</span>
+        <h1>Que bom ter você por aqui.</h1>
+        <p class="muted">Sua conta está conectada ao TaskLab.</p>
+        <div class="account-card">
+          <div class="profile-head">
+            <div id="avatar" class="avatar" aria-hidden="true"></div>
+            <div>
+              <h2 id="user-name"></h2>
+              <p id="user-email"></p>
+            </div>
+          </div>
+          <span class="connected">Sessão ativa</span>
+          <p class="account-note">Este ? seu espaço no TaskLab. Você pode sair da conta a qualquer momento pelo botão acima.</p>
+        </div>
+      </section>
+      <footer class="home-footer">TaskLab · Um ambiente para aprender fazendo.</footer>
+    </main>
+    <script type="module" src="js/home.js"></script>
+  </body>
+</html>
