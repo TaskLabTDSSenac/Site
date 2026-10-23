@@ -35,7 +35,7 @@ A API existente não foi alterada nesta etapa. Sem CORS, o navegador pode bloque
 - `index.html` e `js/login.js`: login, visibilidade da senha, validação de sessão existente e mensagens de sucesso/erro.
 - `cadastro.html` e `js/register.js`: cadastro com confirmação local de senha; envia somente name, email e password. Após sucesso, volta ao login, sem autenticação automática.
 - `inicio.html` e `js/home.js`: perfil carregado de `/users/me`, conteúdo oculto até validar, nova tentativa em falhas e logout local.
-- `css/style.css`: identidade visual azul, layout responsivo, foco visível e fontes do sistema.
+- `css/style.css`: identidade visual de grimório, layout responsivo, foco visível e fontes do sistema.
 - `js/config.js`: endereço da API.
 - `js/api.js`: cliente HTTP, JSON, respostas vazias/204, erros textuais ou listas 422, timeout e mensagens de conexão/CORS.
 - `js/session.js`: token e avisos descartáveis centralizados; logout remove o token.
@@ -71,3 +71,24 @@ A integração real e a verificação visual devem ser confirmadas no navegador 
 ## Escopo
 
 Implementados login, cadastro, perfil protegido e logout local. Tarefas, alteração de senha, recuperação de senha e revogação de tokens não fazem parte desta etapa do frontend.
+
+
+## Identidade visual: seu grimório de tarefas
+
+O TaskLab usa uma atmosfera de biblioteca de Hogwarts à noite: fundo azul-marinho,
+dourado envelhecido e cartões de pergaminho. É um projeto educacional inspirado
+no universo de Harry Potter, sem vínculo oficial.
+
+O emblema próprio de livro e estrela e a silhueta do castelo são SVGs inline,
+decorativos e ocultos de tecnologias assistivas. Não há imagens externas, CDNs,
+fontes baixadas, áudio ou dependências novas. Títulos usam Georgia com fallbacks;
+textos e campos usam fontes de sistema. As cores das casas são apenas detalhes
+decorativos, sem escolha de casa ou tarefas fictícias.
+
+As variáveis em `css/style.css` centralizam paleta, espaços, tipografia e sombras.
+Em telas menores, o castelo é ocultado para priorizar o formulário. Há foco de
+teclado visível, mensagens textuais e respeito a `prefers-reduced-motion`.
+
+Os IDs dos formulários, módulos de autenticação, contratos da API, sessionStorage,
+logout e `iniciar.bat` foram preservados. A saudação reutiliza o nome real inserido
+por `textContent` pelo módulo `home.js`.
