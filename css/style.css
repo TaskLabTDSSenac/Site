@@ -264,3 +264,62 @@ dialog p { overflow-wrap: anywhere; }
   .header-session { width: 100%; justify-content: space-between; }
   #header-user { max-width: 210px; }
 }
+
+/* Login: cenário oficial de GTA VI com painel escuro e acentos neon. */
+.login-page {
+  color: #f5f2f3;
+  background: #050505;
+}
+body.login-page {
+  background:
+    linear-gradient(90deg, #050505b8 0%, #05050555 48%, #050505a8 100%),
+    linear-gradient(0deg, #0505058c, transparent 55%),
+    url("https://www.rockstargames.com/VI/_next/static/media/Jason_Lucia_Lock_And_Load_landscape.0l9s5w7ih9p~3.jpg?akim=1&imdensity=1&imwidth=1920") center 42% / cover fixed,
+    #050505;
+}
+body.login-page .shell { max-width: none; grid-template-columns: 1fr 1fr; }
+body.login-page .intro { padding: clamp(24px, 5vw, 76px); }
+body.login-page .brand { color: #f5a7c8; }
+body.login-page .brand small,
+body.login-page .intro-copy,
+body.login-page .intro-footer { display: none; }
+body.login-page .form-area { padding: clamp(20px, 5vw, 72px); }
+body.login-page .card {
+  max-width: 440px;
+  color: #f7f3f5;
+  background: #09090dec;
+  border: 1px solid #f08ab78a;
+  border-radius: 10px;
+  box-shadow: 0 24px 80px #000b, inset 0 0 0 1px #ffffff0a;
+}
+body.login-page .card-ornament { color: #f08ab7; }
+body.login-page .card-ornament span { background: #f08ab780; }
+body.login-page .card h1 { font: 700 28px/1.2 var(--sans); letter-spacing: 0; }
+body.login-page .card > .muted { color: #c8bfc4; }
+body.login-page label { color: #f5edf1; }
+body.login-page input {
+  color: #fff;
+  background: #151316;
+  border-color: #5e4c56;
+}
+body.login-page input::placeholder { color: #afa2a9; }
+body.login-page input:focus { border-color: #f08ab7; }
+body.login-page .toggle { color: #ffadd0; }
+body.login-page .toggle:hover { background: #f08ab71f; }
+body.login-page .primary {
+  color: #10080c;
+  background: linear-gradient(110deg, #f28db9, #ffc4d9, #ef80b0);
+  border-color: #f7a8c8;
+  box-shadow: 0 4px 18px #f08ab733;
+}
+body.login-page .primary:hover { background: #ffc4d9; border-color: #fff; }
+body.login-page .form-footer { color: #c8bfc4; }
+body.login-page .form-footer a { color: #ffadd0; }
+body.login-page :focus-visible { outline-color: #ffb6d4; }
+@media (max-width: 800px) {
+  body.login-page { background-attachment: scroll; }
+  body.login-page .shell { display: flex; flex-direction: column; min-height: 100vh; }
+  body.login-page .intro { padding: 24px 24px 0; }
+  body.login-page .form-area { flex: 1; padding: 28px 20px 36px; }
+  body.login-page .card { margin: auto; }
+}
