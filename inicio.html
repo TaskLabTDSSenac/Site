@@ -1,24 +1,24 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="TaskLab — Seu grimório de tarefas.">
-    <title>Minhas tarefas · TaskLab</title>
+    <meta name="description" content="MiauNote — organize suas tarefas e ideias com carinho.">
+    <title>Minhas notas · MiauNote</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <header class="topbar app-topbar">
-      <a class="brand" href="inicio.html" aria-label="TaskLab, início">
+      <a class="brand" href="inicio.html" aria-label="MiauNote, início">
           <svg class="emblem" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
             <path d="M32 3 56 16v30L32 61 8 46V16Z" stroke="currentColor"/>
             <path d="M16 29c6-2 11-1 16 3 5-4 10-5 16-3v18c-6-2-11-1-16 2-5-3-10-4-16-2Z" stroke="currentColor" stroke-width="1.8"/>
             <path d="M32 32v17M20 34l8 2m-8 4 8 2m8-6 8-2m-8 8 8-2M32 12l2.5 5.5 6 .7-4.5 4 1.2 5.8-5.2-3-5.2 3 1.2-5.8-4.5-4 6-.7Z" stroke="currentColor" stroke-linejoin="round"/>
           </svg>
-          <span class="brand-text">TaskLab<small>Seu grimório de tarefas</small></span>
+          <span class="brand-text">MiauNote<small>Seu cantinho de ideias</small></span>
         </a>
       <nav aria-label="Navegação principal">
-        <a href="inicio.html" aria-current="page">Minhas tarefas</a>
+        <a href="inicio.html" aria-current="page">Minhas notas</a>
         <a href="perfil.html">Meu perfil</a>
       </nav>
       <div class="header-session">
@@ -33,35 +33,37 @@
       <section id="content" hidden>
         <div class="page-heading">
           <div>
-            <span class="eyebrow">Uma missão de cada vez</span>
-            <h1>Meu grimório de tarefas</h1>
-            <p class="muted">Organize suas missões e acompanhe sua jornada.</p>
+            <span class="eyebrow">Um carinho de cada vez</span>
+            <h1>Meu cantinho de notas</h1>
+            <p class="muted">Organize suas ideias e deixe espaço para novas descobertas.</p>
           </div>
-          <a class="primary fit-button" href="tarefa.html">Criar tarefa</a>
+          <a class="primary fit-button" href="tarefa.html">＋ Nova anotação</a>
         </div>
         <div id="task-message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
         <p id="tasks-loading" class="loading" role="status" aria-live="polite" hidden>Carregando tarefas…</p>
         <button id="tasks-retry" class="secondary" type="button" hidden>Tentar novamente</button>
         <div id="empty" class="account-card empty-state" hidden>
-          <h2>Uma página em branco</h2>
-          <p>Seu grimório ainda não possui tarefas.</p>
-          <a class="paper-button" href="tarefa.html">Criar tarefa</a>
+          <h2>Seu cantinho está quietinho</h2>
+          <p>Adicione uma anotação e comece a guardar suas ideias.</p>
+          <a class="paper-button" href="tarefa.html">＋ Criar anotação</a>
         </div>
+        <label class="search-box" for="note-search"><span aria-hidden="true">⌕</span><input id="note-search" type="search" aria-label="Buscar anotações" placeholder="Buscar nas suas anotações..." autocomplete="off"><span class="search-paw" aria-hidden="true">🐾</span></label>
+        <p id="no-results" class="muted no-results" hidden>Nenhuma anotação combina com essa busca. 🐈</p>
         <div id="task-list" class="task-list"></div>
       </section>
       <footer class="home-footer">
-        <a href="inicio.html">Voltar para Minhas tarefas</a>
-        <p>Projeto educacional inspirado no universo de Harry Potter.</p>
+        <a href="inicio.html">Voltar para minhas notas</a>
+        <p>Um espaço aconchegante para suas ideias. 🐾</p>
       </footer>
     </main>
     
     <dialog id="delete-dialog" aria-labelledby="delete-heading" aria-describedby="delete-description">
       <form method="dialog">
-        <h2 id="delete-heading">Excluir tarefa?</h2>
-        <p id="delete-description">Esta ação não pode ser desfeita. Tarefa: <strong id="delete-title"></strong></p>
+        <h2 id="delete-heading">Excluir anotação?</h2>
+        <p id="delete-description">Esta ação não pode ser desfeita. Anotação: <strong id="delete-title"></strong></p>
         <div class="actions">
           <button class="paper-button" value="cancel" autofocus>Cancelar</button>
-          <button class="paper-button danger" value="delete">Excluir tarefa</button>
+          <button class="paper-button danger" value="delete">Excluir anotação</button>
         </div>
       </form>
     </dialog>

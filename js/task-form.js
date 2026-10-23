@@ -19,7 +19,7 @@ title.addEventListener('input', counts);
 description.addEventListener('input', counts);
 mountProtected(async () => {
   id = taskId(false);
-  document.getElementById('page-title').textContent = id ? 'Editar uma missão' : 'Uma nova missão';
+  document.getElementById('page-title').textContent = id ? 'Editar anotação' : 'Nova anotação';
   if (id) {
     const task = await getTask(id);
     title.value = task.title;
@@ -43,6 +43,6 @@ form.addEventListener('submit', async event => {
     setNotice(id ? 'task-updated' : 'task-created');
     window.location.replace('inicio.html');
   } catch (error) {
-    if (error.status !== 401) showMessage(message, error.status === 404 ? 'Esta tarefa não está mais disponível. Volte para Minhas tarefas.' : error.message);
+    if (error.status !== 401) showMessage(message, error.status === 404 ? 'Esta anotação não está mais disponível. Volte para minhas notas.' : error.message);
   } finally { setBusy(save, false, 'Salvar'); }
 });

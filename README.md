@@ -1,8 +1,8 @@
-# TaskLab Web — Seu grimório de tarefas
+# MiauNote — seu cantinho de anotações
 
-Frontend didático em HTML, CSS e JavaScript puro, sem frameworks, bundlers,
-dependência de Node.js, CDNs ou imagens externas. Projeto educacional inspirado
-no universo de Harry Potter, sem vínculo oficial.
+Aplicativo em HTML, CSS e JavaScript puro, sem frameworks, bundlers,
+dependência de Node.js, CDNs ou imagens externas. A identidade visual usa gatos,
+patinhas e tons pastel; as anotações continuam integradas à API existente.
 
 ## Executar
 
@@ -19,7 +19,7 @@ O endereço fica centralizado em `js/config.js`, em `API_BASE_URL`, com padrão
 `http://127.0.0.1:8000`. A API deve permitir as origens
 `http://127.0.0.1:5500` e `http://localhost:5500`, os métodos GET, POST, PUT,
 PATCH, DELETE e OPTIONS e os cabeçalhos Authorization e Content-Type.
-O backend do TaskLab já possui essa configuração, com `allow_credentials=False`.
+O backend existente já possui essa configuração, com `allow_credentials=False`.
 O cliente usa JWT no cabeçalho, sem cookies de autenticação.
 
 Um site HTTPS hospedado não deve apontar para uma API HTTP local. Esta entrega
@@ -31,7 +31,7 @@ o endereço e o CORS; o Swagger funcionar não garante acesso entre origens.
 - `index.html` / `js/login.js`: login e validação de sessão existente.
 - `cadastro.html` / `js/register.js`: cadastro; confirmação de senha fica apenas
   na interface. Após sucesso, retorna ao login com aviso descartável.
-- `inicio.html` / `js/home.js` / `js/tasks.js`: painel com lista real, situação,
+- `inicio.html` / `js/home.js` / `js/tasks.js`: painel com lista real, busca local,
   estado vazio, carregamento, nova tentativa e ações por tarefa.
 - `tarefa.html` / `js/task-form.js`: criação sem ID; edição com `?id=123`.
 - `tarefa-detalhes.html` / `js/task-details.js`: consulta com `?id=123`, datas
@@ -101,8 +101,7 @@ ou 500 preserva o token e oferece nova tentativa. O logout é apenas local.
 Erros textuais e listas 422 são tratados com mensagens em português; não se
 exibem objetos brutos ou detalhes internos de erros 500.
 
-O visual preserva azul-noturno, dourado, pergaminhos e o emblema original de livro
-e estrela. SVGs são decorativos e fontes são locais. Há labels visíveis, foco
+O visual usa rosa pastel, lilás, creme, detalhes felinos e fontes locais. Há labels visíveis, foco
 evidente, mensagens com aria-live, navegação por teclado e respeito à preferência
 por movimento reduzido. A navegação e as ações se adaptam a telas de 360px.
 
@@ -125,4 +124,4 @@ proxy local apenas no ambiente temporário; os arquivos entregues usam o endere�
 normal de `js/config.js`. O banco da demonstração não recebeu dados de verificação.
 Edição de nome/e-mail não pôde ser validada porque sua rota ainda não existe.
 
-Não há recuperação de senha, refresh token, reabertura de tarefas ou seleção de casa.
+Não há recuperação de senha, refresh token ou reabertura de tarefas.

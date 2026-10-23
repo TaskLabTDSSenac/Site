@@ -1,7 +1,7 @@
 @echo off
 setlocal
 cd /d "%~dp0"
-echo TaskLab Web: http://127.0.0.1:5500
+echo MiauNote: http://127.0.0.1:5500
 echo Execute a API em outro terminal na porta 8000.
 echo Para encerrar, pressione Ctrl+C.
 py -3.12 -m http.server 5500 --bind 127.0.0.1
