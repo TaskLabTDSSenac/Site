@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="TaskLab — Seu grimório de tarefas. Projeto educacional inspirado no universo de Harry Potter.">
-    <title>Minha conta · TaskLab</title>
+    <meta name="description" content="TaskLab — Seu grimório de tarefas.">
+    <title>Minhas tarefas · TaskLab</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <header class="topbar">
-      <a class="brand" href="index.html" aria-label="TaskLab, início">
+    <header class="topbar app-topbar">
+      <a class="brand" href="inicio.html" aria-label="TaskLab, início">
           <svg class="emblem" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
             <path d="M32 3 56 16v30L32 61 8 46V16Z" stroke="currentColor"/>
             <path d="M16 29c6-2 11-1 16 3 5-4 10-5 16-3v18c-6-2-11-1-16 2-5-3-10-4-16-2Z" stroke="currentColor" stroke-width="1.8"/>
@@ -17,34 +17,54 @@
           </svg>
           <span class="brand-text">TaskLab<small>Seu grimório de tarefas</small></span>
         </a>
-      <button id="logout" class="secondary" type="button">Sair</button>
+      <nav aria-label="Navegação principal">
+        <a href="inicio.html" aria-current="page">Minhas tarefas</a>
+        <a href="perfil.html">Meu perfil</a>
+      </nav>
+      <div class="header-session">
+        <span id="header-user"></span>
+        <button id="logout" class="secondary" type="button">Sair</button>
+      </div>
     </header>
-    <main class="workspace">
+    <main class="workspace app-workspace">
       <div id="loading" class="loading" role="status" aria-live="polite">Validando sua sessão…</div>
       <div id="message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
       <button id="retry" class="secondary" type="button" hidden>Tentar novamente</button>
-      <section id="account" hidden>
-        <span class="eyebrow">O seu espaço em Hogwarts</span>
-        <h1>Seu grimório está pronto</h1>
-        <p class="muted">Em breve, suas tarefas aparecerão aqui como missões da sua jornada.</p>
-        <div class="account-card">
-          <div class="card-ornament" aria-hidden="true">
-            <span></span><svg viewBox="0 0 24 24" fill="none"><path d="m12 2 2.7 6.6L22 12l-7.3 3.4L12 22l-2.7-6.6L2 12l7.3-3.4Z" stroke="currentColor"/></svg><span></span>
+      <section id="content" hidden>
+        <div class="page-heading">
+          <div>
+            <span class="eyebrow">Uma missão de cada vez</span>
+            <h1>Meu grimório de tarefas</h1>
+            <p class="muted">Organize suas missões e acompanhe sua jornada.</p>
           </div>
-          <div class="profile-head">
-            <div id="avatar" class="avatar" aria-hidden="true"></div>
-            <div>
-              <h2>Olá, <span id="user-name"></span>.</h2>
-              <p id="user-email"></p>
-            </div>
-          </div>
-          <span class="connected">Sessão ativa</span>
-          <p class="account-note">Cada jornada tem seu tempo. Seu próximo capítulo começa aqui.</p>
-          <div class="house-colors" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <a class="primary fit-button" href="tarefa.html">Criar tarefa</a>
         </div>
+        <div id="task-message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+        <p id="tasks-loading" class="loading" role="status" aria-live="polite" hidden>Carregando tarefas…</p>
+        <button id="tasks-retry" class="secondary" type="button" hidden>Tentar novamente</button>
+        <div id="empty" class="account-card empty-state" hidden>
+          <h2>Uma página em branco</h2>
+          <p>Seu grimório ainda não possui tarefas.</p>
+          <a class="paper-button" href="tarefa.html">Criar tarefa</a>
+        </div>
+        <div id="task-list" class="task-list"></div>
       </section>
-      <footer class="home-footer">Projeto educacional inspirado no universo de Harry Potter.</footer>
+      <footer class="home-footer">
+        <a href="inicio.html">Voltar para Minhas tarefas</a>
+        <p>Projeto educacional inspirado no universo de Harry Potter.</p>
+      </footer>
     </main>
+    
+    <dialog id="delete-dialog" aria-labelledby="delete-heading" aria-describedby="delete-description">
+      <form method="dialog">
+        <h2 id="delete-heading">Excluir tarefa?</h2>
+        <p id="delete-description">Esta ação não pode ser desfeita. Tarefa: <strong id="delete-title"></strong></p>
+        <div class="actions">
+          <button class="paper-button" value="cancel" autofocus>Cancelar</button>
+          <button class="paper-button danger" value="delete">Excluir tarefa</button>
+        </div>
+      </form>
+    </dialog>
     <script type="module" src="js/home.js"></script>
   </body>
 </html>

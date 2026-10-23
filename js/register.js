@@ -20,7 +20,7 @@ form.addEventListener('submit', async event => {
     return;
   }
   if (password !== form.confirm_password.value) {
-    showMessage(message, 'A confirmação de senha deve ser igual ? senha.');
+    showMessage(message, 'A confirmação de senha deve ser igual à senha.');
     form.confirm_password.focus();
     return;
   }

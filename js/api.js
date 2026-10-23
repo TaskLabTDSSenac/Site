@@ -1,11 +1,12 @@
 import { API_BASE_URL } from './config.js';
-import { getToken } from './session.js';
+import { getToken, expireSession } from './session.js';
 
 export class ApiError extends Error {
   constructor(message, status = 0) { super(message); this.status = status; }
 }
-const fields = { name: 'Nome', email: 'E-mail', password: 'Senha' };
+const fields = { name: 'Nome', email: 'E-mail', password: 'Senha', title: 'Título', description: 'Descrição', current_password: 'Senha atual', new_password: 'Nova senha' };
 function errorMessage(detail, status) {
+  if (status >= 500) return 'O servidor encontrou um problema. Tente novamente em instantes.';
   if (typeof detail === 'string') return detail;
   if (Array.isArray(detail)) {
     return detail.map(error => {
@@ -28,7 +29,7 @@ export async function request(path, { method = 'GET', data, authenticated = fals
   if (data !== undefined) headers['Content-Type'] = 'application/json';
   if (authenticated) {
     const token = getToken();
-    if (!token) throw new ApiError('Sua sessão expirou. Entre novamente.', 401);
+    if (!token) { expireSession(); throw new ApiError('Sua sessão expirou. Entre novamente.', 401); }
     headers.Authorization = `Bearer ${token}`;
   }
   const controller = new AbortController();
@@ -41,10 +42,16 @@ export async function request(path, { method = 'GET', data, authenticated = fals
         signal: controller.signal
       });
     } catch {
-      throw new ApiError('Não foi possível conectar ? API. Confira se ela está em execução e se o CORS permite este endereço.');
+      throw new ApiError('Não foi possível conectar à API. Confira se ela está em execução e se o CORS permite este endereço.');
+    }
+    if (authenticated && response.status === 401) {
+      expireSession();
+      throw new ApiError('Sua sessão expirou. Entre novamente.', 401);
     }
     if (response.status === 204) return null;
-    const text = await response.text();
+    let text;
+    try { text = await response.text(); }
+    catch { throw new ApiError('A conexão com a API foi interrompida. Tente novamente.'); }
     let body = null;
     if (text) {
       try { body = JSON.parse(text); } catch {
@@ -56,7 +63,7 @@ export async function request(path, { method = 'GET', data, authenticated = fals
     return body;
   } finally { clearTimeout(timeout); }
 }
-// O texto recebido nunca ? interpretado como HTML.
+// O texto recebido nunca é interpretado como HTML.
 export function showMessage(element, text, kind = 'error') {
   element.textContent = text;
   element.dataset.kind = kind;

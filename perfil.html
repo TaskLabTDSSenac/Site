@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="TaskLab — Seu grimório de tarefas.">
+    <title>Meu perfil · TaskLab</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header class="topbar app-topbar">
+      <a class="brand" href="inicio.html" aria-label="TaskLab, início">
+          <svg class="emblem" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
+            <path d="M32 3 56 16v30L32 61 8 46V16Z" stroke="currentColor"/>
+            <path d="M16 29c6-2 11-1 16 3 5-4 10-5 16-3v18c-6-2-11-1-16 2-5-3-10-4-16-2Z" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M32 32v17M20 34l8 2m-8 4 8 2m8-6 8-2m-8 8 8-2M32 12l2.5 5.5 6 .7-4.5 4 1.2 5.8-5.2-3-5.2 3 1.2-5.8-4.5-4 6-.7Z" stroke="currentColor" stroke-linejoin="round"/>
+          </svg>
+          <span class="brand-text">TaskLab<small>Seu grimório de tarefas</small></span>
+        </a>
+      <nav aria-label="Navegação principal">
+        <a href="inicio.html">Minhas tarefas</a>
+        <a href="perfil.html" aria-current="page">Meu perfil</a>
+      </nav>
+      <div class="header-session">
+        <span id="header-user"></span>
+        <button id="logout" class="secondary" type="button">Sair</button>
+      </div>
+    </header>
+    <main class="workspace app-workspace">
+      <div id="loading" class="loading" role="status" aria-live="polite">Validando sua sessão…</div>
+      <div id="message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+      <button id="retry" class="secondary" type="button" hidden>Tentar novamente</button>
+      <section id="content" hidden>
+        <span class="eyebrow">A assinatura do seu grimório</span>
+        <h1>Meu perfil</h1>
+        <div class="profile-grid">
+          <form id="profile-form" class="account-card">
+            <h2>Dados pessoais</h2>
+            <p id="profile-pending" class="pending-note">A edição de nome e e-mail ainda não está disponível na API. Você pode consultar seus dados; o salvamento permanece indisponível.</p>
+            <div id="profile-message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+            <div class="form-field">
+              <label for="user-id">ID do usuário</label>
+              <input id="user-id" readonly>
+            </div>
+            <div class="form-field">
+              <label for="name">Nome</label>
+              <input id="name" name="name" required maxlength="150" autocomplete="name">
+            </div>
+            <div class="form-field">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" required maxlength="255" autocomplete="email">
+            </div>
+            <button id="save-profile" class="primary" type="submit" disabled aria-describedby="profile-pending">Salvar dados</button>
+          </form>
+          <form id="password-form" class="account-card">
+            <h2>Alterar senha</h2>
+            <p class="muted">Escolha uma nova senha entre 8 e 128 caracteres.</p>
+            <div id="password-message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+          <div class="form-field">
+            <label for="current_password">Senha atual</label>
+            <div class="password-wrap">
+              <input id="current_password" name="current_password" type="password" required minlength="1" maxlength="128" autocomplete="current-password">
+              <button class="toggle" type="button" data-toggle-password="current_password" aria-controls="current_password" aria-pressed="false" aria-label="Mostrar ou ocultar senha atual">Mostrar</button>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="new_password">Nova senha</label>
+            <div class="password-wrap">
+              <input id="new_password" name="new_password" type="password" required minlength="8" maxlength="128" autocomplete="new-password">
+              <button class="toggle" type="button" data-toggle-password="new_password" aria-controls="new_password" aria-pressed="false" aria-label="Mostrar ou ocultar nova senha">Mostrar</button>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="confirm_password">Confirmação da nova senha</label>
+            <div class="password-wrap">
+              <input id="confirm_password" name="confirm_password" type="password" required minlength="8" maxlength="128" autocomplete="new-password">
+              <button class="toggle" type="button" data-toggle-password="confirm_password" aria-controls="confirm_password" aria-pressed="false" aria-label="Mostrar ou ocultar confirmação da nova senha">Mostrar</button>
+            </div>
+          </div>
+            <button id="save-password" class="primary" type="submit">Alterar senha</button>
+            <p class="hint">Sua sessão continuará ativa. Tokens anteriores permanecem válidos até expirar.</p>
+          </form>
+        </div>
+      </section>
+      <footer class="home-footer">
+        <a href="inicio.html">Voltar para Minhas tarefas</a>
+        <p>Projeto educacional inspirado no universo de Harry Potter.</p>
+      </footer>
+    </main>
+    
+    <script type="module" src="js/profile.js"></script>
+  </body>
+</html>

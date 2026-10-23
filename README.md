@@ -1,94 +1,128 @@
-# TaskLab Web
+# TaskLab Web — Seu grimório de tarefas
 
-Frontend didático em HTML5, CSS3 e JavaScript puro, com módulos e Fetch. Não exige Node.js, bundler, framework ou CDN.
+Frontend didático em HTML, CSS e JavaScript puro, sem frameworks, bundlers,
+dependência de Node.js, CDNs ou imagens externas. Projeto educacional inspirado
+no universo de Harry Potter, sem vínculo oficial.
 
-## Executar localmente
+## Executar
 
-1. Inicie a API pelo `iniciar.bat` da pasta **Api**, em um terminal (porta 8000).
-2. Na pasta **Site**, execute `.\iniciar.bat` em outro terminal. Requer Python 3.12 e o launcher `py`.
-3. Acesse **http://127.0.0.1:5500**. Não abra os HTML por `file://`, pois os scripts usam módulos.
+1. Inicie a API na pasta `Api`, em um terminal, na porta 8000.
+2. Na pasta `Site`, execute `.\iniciar.bat` em outro terminal.
+3. Acesse http://127.0.0.1:5500. Não abra os HTML por `file://`.
 
-O servidor web executa `py -3.12 -m http.server 5500 --bind 127.0.0.1`. A porta 8000 ? reservada ? API.
+O servidor estático usa `py -3.12 -m http.server 5500 --bind 127.0.0.1`.
+Python 3.12 e seu launcher `py` são necessários apenas para servir os arquivos.
 
 ## API e CORS
 
-Altere `API_BASE_URL` em `js/config.js` se necessário. O padrão ? `http://127.0.0.1:8000`.
-O backend deve permitir a origem `http://127.0.0.1:5500`, métodos GET/POST e cabeçalhos Content-Type e Authorization. `localhost` ? uma origem diferente de `127.0.0.1`.
+O endereço fica centralizado em `js/config.js`, em `API_BASE_URL`, com padrão
+`http://127.0.0.1:8000`. A API deve permitir as origens
+`http://127.0.0.1:5500` e `http://localhost:5500`, os métodos GET, POST, PUT,
+PATCH, DELETE e OPTIONS e os cabeçalhos Authorization e Content-Type.
+O backend do TaskLab já possui essa configuração, com `allow_credentials=False`.
+O cliente usa JWT no cabeçalho, sem cookies de autenticação.
 
-Exemplo de configuração necessária na API FastAPI, após criar `app`:
+Um site HTTPS hospedado não deve apontar para uma API HTTP local. Esta entrega
+foi preparada para execução local. Se houver falha de conexão, confira a API,
+o endereço e o CORS; o Swagger funcionar não garante acesso entre origens.
 
-```python
-from fastapi.middleware.cors import CORSMiddleware
+## Páginas e módulos
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5500"],
-    allow_methods=["GET", "POST"],
-    allow_headers=["Content-Type", "Authorization"],
-)
-```
+- `index.html` / `js/login.js`: login e validação de sessão existente.
+- `cadastro.html` / `js/register.js`: cadastro; confirmação de senha fica apenas
+  na interface. Após sucesso, retorna ao login com aviso descartável.
+- `inicio.html` / `js/home.js` / `js/tasks.js`: painel com lista real, situação,
+  estado vazio, carregamento, nova tentativa e ações por tarefa.
+- `tarefa.html` / `js/task-form.js`: criação sem ID; edição com `?id=123`.
+- `tarefa-detalhes.html` / `js/task-details.js`: consulta com `?id=123`, datas
+  em pt-BR no horário local, descrição com quebras de linha e ações.
+- `perfil.html` / `js/profile.js`: dados pessoais e formulário independente
+  para alteração de senha.
+- `js/tasks-service.js`: chamadas HTTP de tarefas, sem regras duplicadas nas telas.
+- `js/task-actions.js`: conclusão e confirmação de exclusão compartilhadas.
+- `js/protected.js`: validação de sessão, cabeçalho, IDs e estados de envio.
+- `js/api.js`: JSON, Bearer opcional, respostas vazias/204, timeout e erros.
+- `js/session.js`: armazenamento centralizado do token, avisos e logout.
+- `css/style.css`: identidade e componentes compartilhados, com variáveis CSS.
 
-A API existente não foi alterada nesta etapa. Sem CORS, o navegador pode bloquear a integração mesmo quando o Swagger funciona. Um site hospedado em HTTPS não deve apontar para uma API HTTP local; esta entrega foi preparada para execução local.
+## Tarefas
 
-## Arquivos e comportamento
+Cada página protegida consulta `GET /users/me` antes de revelar seus dados.
+O painel usa `GET /tasks` e não cria contadores ou tarefas fictícias.
+As ações correspondem aos contratos reais:
 
-- `index.html` e `js/login.js`: login, visibilidade da senha, validação de sessão existente e mensagens de sucesso/erro.
-- `cadastro.html` e `js/register.js`: cadastro com confirmação local de senha; envia somente name, email e password. Após sucesso, volta ao login, sem autenticação automática.
-- `inicio.html` e `js/home.js`: perfil carregado de `/users/me`, conteúdo oculto até validar, nova tentativa em falhas e logout local.
-- `css/style.css`: identidade visual de grimório, layout responsivo, foco visível e fontes do sistema.
-- `js/config.js`: endereço da API.
-- `js/api.js`: cliente HTTP, JSON, respostas vazias/204, erros textuais ou listas 422, timeout e mensagens de conexão/CORS.
-- `js/session.js`: token e avisos descartáveis centralizados; logout remove o token.
-- `iniciar.bat`: servidor estático na porta 5500.
+| Ação | Requisição |
+| --- | --- |
+| Criar | POST /tasks |
+| Listar | GET /tasks |
+| Consultar | GET /tasks/{id} |
+| Editar | PUT /tasks/{id} |
+| Concluir | PATCH /tasks/{id}/complete, sem corpo |
+| Excluir | DELETE /tasks/{id}, resposta 204 sem corpo |
 
-A interface valida campos obrigatórios, nome após trim, formato de e-mail, limites de senha e confirmação. As senhas não são aparadas. O servidor continua sendo a autoridade para validar dados e autorizar operações; validação no navegador não substitui a API.
+Criação e edição enviam somente `title` e `description`. O título é aparado e
+deve ter de 3 a 150 caracteres; a descrição aceita até 500. Descrição vazia é
+enviada como `null` e limpa o valor anterior no PUT. Os formulários preservam
+o conteúdo em falhas e bloqueiam submissões repetidas. IDs devem ser inteiros
+positivos representáveis pelo SQLite.
 
-## Sessão e segurança
+Não há reabertura de tarefas. Uma conclusão que retorna 400 mostra a mensagem
+da API e recarrega a tarefa/lista. Exclusão exige confirmação em diálogo nativo,
+com título inserido como texto, Cancelar, Excluir tarefa, Escape e retorno de foco.
+Nenhuma tarefa é removida ou marcada como concluída antes da confirmação da API.
 
-O token fica em `sessionStorage`, na chave `tasklab_access_token`. Senhas nunca são armazenadas. O aviso de cadastro/sessão expirada usa um indicador descartável, sem colocar credenciais na URL. Authorization ? enviado somente nas chamadas autenticadas.
+## Perfil e pendência de backend
 
-`sessionStorage` ? acessível por JavaScript: exige proteção contra XSS. Dados recebidos são inseridos com `textContent`, nunca como HTML, e não há scripts de CDN. Não registre credenciais no console. Esse armazenamento não torna o token imune a código malicioso.
+O `/openapi.json` da API foi consultado e **não oferece atualização de nome/e-mail**.
+Por isso, os campos são preenchidos, mas **Salvar dados permanece desabilitado**,
+com aviso visível. Não há sucesso simulado nem gravação apenas local.
 
-O logout ? local: remove o token e retorna ao login, sem endpoint de logout. Tokens já emitidos continuam válidos até expirar. Um 401 no perfil limpa a sessão; falhas de rede e erros de servidor preservam o token e permitem tentar novamente. A presença do token não substitui sua validação pela API.
+`updateProfile` em `js/profile.js` está preparada para o contrato proposto
+`PATCH /users/me` com `{name, email}` e resposta `{id, name, email}`. A constante
+`PROFILE_UPDATE_AVAILABLE` permanece `false`. Ative-a somente depois de confirmar
+que o backend implementa esse contrato, incluindo 409 e 422. Nenhuma mudança de
+backend foi feita nesta etapa.
 
-## Verificações manuais
+A troca de senha está funcional: `PATCH /users/me/password` envia somente
+`current_password` e `new_password`. A confirmação pertence à interface.
+Senha atual: 1 a 128 caracteres. Nova senha: 8 a 128 caracteres. Espaços são
+preservados. Após sucesso, os três campos são limpos e a sessão continua ativa.
+Tokens antigos permanecem válidos até expirar, conforme a política sem revogação.
 
-Com API real e CORS configurados:
+## Segurança, erros e acessibilidade
 
-1. Cadastre uma conta: espere retornar ao login com “Conta criada com sucesso. Faça login para continuar.”
-2. Informe confirmação diferente: o formulário deve impedir o envio.
-3. Repita um e-mail: espere a mensagem de duplicidade.
-4. Teste login incorreto e correto. O correto abre o perfil com nome e e-mail.
-5. Sem token, abra `inicio.html`: deve voltar ao login.
-6. Com token inválido/expirado, espere retorno ao login com aviso de sessão expirada.
-7. Clique em Sair: o token deve desaparecer e o acesso ao perfil exigir novo login.
-8. Desligue a API: espere mensagem de conexão/CORS; no perfil, token preservado e botão Tentar novamente.
-9. Simule erro 500: token preservado e nova tentativa disponível.
-10. Navegue com Tab/Shift+Tab/Enter e confira foco e botões Mostrar/Ocultar. Teste tela estreita de 360px sem rolagem horizontal.
+O token usa `sessionStorage`, chave `tasklab_access_token`; senhas não são
+armazenadas nem registradas no console. O armazenamento é acessível por JavaScript
+e exige proteção contra XSS. Dados da API entram por `textContent`, nunca por
+`innerHTML`. A validação da interface não substitui validação/autorização do servidor.
 
-A integração real e a verificação visual devem ser confirmadas no navegador com a API disponível. Não confundir testes com respostas simuladas com validação ponta a ponta.
+Um 401 autenticado limpa o token e redireciona ao login com aviso. Falha de rede
+ou 500 preserva o token e oferece nova tentativa. O logout é apenas local.
+Erros textuais e listas 422 são tratados com mensagens em português; não se
+exibem objetos brutos ou detalhes internos de erros 500.
 
-## Escopo
+O visual preserva azul-noturno, dourado, pergaminhos e o emblema original de livro
+e estrela. SVGs são decorativos e fontes são locais. Há labels visíveis, foco
+evidente, mensagens com aria-live, navegação por teclado e respeito à preferência
+por movimento reduzido. A navegação e as ações se adaptam a telas de 360px.
 
-Implementados login, cadastro, perfil protegido e logout local. Tarefas, alteração de senha, recuperação de senha e revogação de tokens não fazem parte desta etapa do frontend.
+## Verificação manual
 
+1. Cadastre e autentique uma conta. Confira a lista vazia.
+2. Crie uma tarefa; abra seus detalhes; edite título e descrição.
+3. Conclua e confirme que a ação Concluir desaparece.
+4. Cancele uma exclusão e depois confirme; verifique a lista atualizada.
+5. Experimente título de dois caracteres, descrição acima de 500 e ID inexistente.
+6. No perfil, confirme o aviso de edição pendente. Teste confirmação de senha
+   divergente e depois uma troca válida. Faça novo login com a senha nova.
+7. Teste Sair, acesso direto sem token, token inválido e API indisponível.
+8. Navegue por teclado, feche o diálogo com Escape e confira em desktop e 360px.
 
-## Identidade visual: seu grimório de tarefas
+Foram exercitados fluxos no Chrome headless com uma instância real da API em
+banco SQLite temporário. As verificações incluíram CRUD, senha, logout, erros,
+retorno de foco do diálogo e largura de 360px. A prévia de verificação usou um
+proxy local apenas no ambiente temporário; os arquivos entregues usam o endereço
+normal de `js/config.js`. O banco da demonstração não recebeu dados de verificação.
+Edição de nome/e-mail não pôde ser validada porque sua rota ainda não existe.
 
-O TaskLab usa uma atmosfera de biblioteca de Hogwarts à noite: fundo azul-marinho,
-dourado envelhecido e cartões de pergaminho. É um projeto educacional inspirado
-no universo de Harry Potter, sem vínculo oficial.
-
-O emblema próprio de livro e estrela e a silhueta do castelo são SVGs inline,
-decorativos e ocultos de tecnologias assistivas. Não há imagens externas, CDNs,
-fontes baixadas, áudio ou dependências novas. Títulos usam Georgia com fallbacks;
-textos e campos usam fontes de sistema. As cores das casas são apenas detalhes
-decorativos, sem escolha de casa ou tarefas fictícias.
-
-As variáveis em `css/style.css` centralizam paleta, espaços, tipografia e sombras.
-Em telas menores, o castelo é ocultado para priorizar o formulário. Há foco de
-teclado visível, mensagens textuais e respeito a `prefers-reduced-motion`.
-
-Os IDs dos formulários, módulos de autenticação, contratos da API, sessionStorage,
-logout e `iniciar.bat` foram preservados. A saudação reutiliza o nome real inserido
-por `textContent` pelo módulo `home.js`.
+Não há recuperação de senha, refresh token, reabertura de tarefas ou seleção de casa.
