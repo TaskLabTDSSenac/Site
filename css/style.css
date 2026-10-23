@@ -264,3 +264,72 @@ dialog p { overflow-wrap: anywhere; }
   .header-session { width: 100%; justify-content: space-between; }
   #header-user { max-width: 210px; }
 }
+
+/* Primeira tela: interface neon cyberpunk, mantendo os componentes e o login. */
+.login-cyberpunk {
+  --night: #070a16;
+  --night-light: #111a31;
+  --gold: #ff3ea5;
+  --gold-bright: #00f5ff;
+  --paper: #101629;
+  --paper-light: #19213a;
+  --ink: #eef4ff;
+  --muted: #a9b4ce;
+  --line: #3c4a6d;
+  --shadow: 0 24px 70px #0009, 0 0 36px #00f5ff14;
+  color: var(--ink);
+  background-color: #070a16;
+  background-image: radial-gradient(ellipse at 18% 42%, #18254a 0, transparent 55%), linear-gradient(#00f5ff08 1px, transparent 1px), linear-gradient(90deg, #00f5ff08 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+.login-cyberpunk .shell { position: relative; isolation: isolate; }
+.login-cyberpunk .shell::before {
+  content: ""; position: fixed; z-index: -1; inset: 0; pointer-events: none;
+  background: linear-gradient(90deg, transparent 49.9%, #00f5ff18 50%, transparent 50.1%);
+}
+.login-cyberpunk .intro { border-right: 1px solid #00f5ff25; }
+.login-cyberpunk .brand { color: #00f5ff; filter: drop-shadow(0 0 9px #00f5ff55); }
+.login-cyberpunk .brand small { color: #a9b4ce; }
+.login-cyberpunk .eyebrow { color: #ff55ae; }
+.login-cyberpunk .intro h2 { color: #f4f6ff; text-shadow: 0 0 22px #00f5ff24; }
+.login-cyberpunk .intro p { color: #b8c4dc; }
+.login-cyberpunk .castle { filter: hue-rotate(135deg) saturate(1.8) drop-shadow(0 0 12px #00e5ff35); }
+.login-cyberpunk .scene-caption { color: #00e5ee; font: 600 10px/1.5 var(--sans); letter-spacing: 1.5px; }
+.login-cyberpunk .scene-caption::first-letter { color: #ff3ea5; }
+.login-cyberpunk .intro-footer { color: #8f9bb7; }
+.login-cyberpunk .card {
+  background: linear-gradient(145deg, #17213aee, #0d1325f5);
+  border: 1px solid #00e5ee75;
+  border-radius: 10px;
+  box-shadow: var(--shadow), inset 0 0 0 1px #ff3ea51a;
+  color: #eef4ff;
+  position: relative;
+}
+.login-cyberpunk .card::before { content: "AUTH // TASKLAB"; display: block; color: #71809f; font: 600 9px var(--sans); letter-spacing: 2px; text-align: center; margin-bottom: 14px; }
+.login-cyberpunk .card-ornament { color: #ff3ea5; margin-bottom: 18px; }
+.login-cyberpunk .card-ornament span { background: linear-gradient(90deg, transparent, #ff3ea5); }
+.login-cyberpunk .card-ornament span:last-child { transform: scaleX(-1); }
+.login-cyberpunk .card h1 { color: #f4f6ff; font: 700 27px/1.2 var(--sans); letter-spacing: .2px; }
+.login-cyberpunk .muted, .login-cyberpunk .form-footer { color: #a9b4ce; }
+.login-cyberpunk label { color: #d5ddf1; font-size: 12px; letter-spacing: .5px; text-transform: uppercase; }
+.login-cyberpunk input {
+  background: #090f20; color: #f4f7ff; border: 1px solid #394766; border-radius: 5px;
+  box-shadow: inset 0 0 16px #0005;
+}
+.login-cyberpunk input::placeholder { color: #75819c; }
+.login-cyberpunk input:focus { outline: none; border-color: #00e5ee; box-shadow: 0 0 0 3px #00e5ee24, 0 0 18px #00e5ee20; }
+.login-cyberpunk .toggle { color: #00e5ee; }
+.login-cyberpunk .toggle:hover { background: #00e5ee18; }
+.login-cyberpunk .primary {
+  border: 1px solid #ff55ae; border-radius: 5px; color: #100b1a;
+  background: linear-gradient(100deg, #ff3ea5, #ff76b9 52%, #00dce8);
+  box-shadow: 0 0 22px #ff3ea538; text-transform: uppercase; letter-spacing: 1.4px;
+}
+.login-cyberpunk .primary:hover { filter: brightness(1.13); box-shadow: 0 0 30px #00e5ee55; }
+.login-cyberpunk .primary:disabled { filter: grayscale(.7); }
+.login-cyberpunk .form-footer a { color: #00e5ee; }
+.login-cyberpunk :focus-visible { outline-color: #ff55ae; }
+@media (max-width: 800px) {
+  .login-cyberpunk .intro { border-right: 0; border-bottom: 1px solid #00f5ff25; }
+  .login-cyberpunk .card { max-width: 520px; }
+}
