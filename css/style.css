@@ -210,6 +210,48 @@ input:focus { border-color: #795a29; }
   button, a, input { transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease; }
 }
 
+/* Login: visual direction inspired by modern motorsport liveries. */
+.login-page {
+  --night: #061329; --night-light: #10264a; --gold: #e5bd35; --gold-bright: #f3d54d;
+  color: #f2f6ff;
+  background: radial-gradient(ellipse at 18% 54%, #124d8970, transparent 48%), radial-gradient(ellipse at 70% 90%, #ba182033, transparent 40%), #040b18;
+}
+.login-page body { background: transparent; }
+.login-page .shell { max-width: none; min-height: 100vh; grid-template-columns: 1.08fr .92fr; }
+.login-page .intro { overflow: hidden; padding: clamp(30px,5vw,76px); background: linear-gradient(135deg,#0b1b36d9,#07122780); border-right: 1px solid #4b79b52e; }
+.login-page .intro::before { content:""; position:absolute; inset:0; opacity:.2; pointer-events:none; background: repeating-linear-gradient(135deg,transparent 0 34px,#5b82b31a 35px,#5b82b31a 36px); mask-image:linear-gradient(90deg,#000,transparent); }
+.login-page .brand { color:#f2d43a; position:relative; }
+.login-page .emblem { width:58px; height:58px; }
+.login-page .brand-text { font:800 32px/1.1 var(--sans); letter-spacing:-1px; color:#f6f8fc; }
+.login-page .brand small { color:#94a9c8; letter-spacing:2px; font-size:9px; }
+.login-page .intro-copy { position:relative; margin:auto 0; }
+.login-page .eyebrow { color:#f1d332; font-size:11px; }
+.login-page .intro h2 { color:white; font:800 clamp(34px,4vw,58px)/1.05 var(--sans); letter-spacing:-2px; text-transform:uppercase; }
+.login-page .intro p { color:#bdcbe0; }
+.login-page .castle { display:none; }
+.login-page .intro-copy::after { content:""; display:block; height:270px; margin:18px 0 8px; background: radial-gradient(ellipse at 51% 85%,#278ef957,transparent 34%), radial-gradient(ellipse at 40% 78%,#050a13 0 5%,transparent 5.5%), radial-gradient(ellipse at 70% 78%,#050a13 0 5%,transparent 5.5%), linear-gradient(180deg,transparent 0 57%,#f0cd35 57% 60%,transparent 60%), linear-gradient(168deg,transparent 0 42%,#c91f36 42% 45%,transparent 45%), linear-gradient(160deg,transparent 0 48%,#124c93 48% 77%,#08204a 78%); clip-path:polygon(0 81%,16% 74%,27% 70%,35% 61%,43% 58%,47% 45%,52% 43%,57% 58%,64% 60%,71% 66%,81% 67%,89% 73%,100% 76%,100% 100%,0 100%); border-bottom:2px solid #267dda; filter:drop-shadow(0 0 20px #168bff); }
+.login-page .intro-copy::before { content:"RACING / 01"; display:block; position:absolute; bottom:248px; right:4px; z-index:1; color:#8aa3c4; font:700 10px var(--sans); letter-spacing:3px; }
+.login-page .scene-caption { text-align:left; color:#8fa6c5; font:600 11px var(--sans); letter-spacing:2px; text-transform:uppercase; }
+.login-page .intro-footer { color:#778ba8; letter-spacing:2px; font-weight:700; }
+.login-page .form-area { padding:40px; }
+.login-page .card { max-width:480px; padding:clamp(30px,4vw,52px); color:#f4f7fc; background:linear-gradient(145deg,#10213b,#091629); border:1px solid #385477; border-radius:16px; box-shadow:0 30px 90px #0009,0 0 55px #1476c51b,inset 0 1px #ffffff12; }
+.login-page .card-ornament { color:#f1d332; }
+.login-page .card-ornament span { background:#35577c; }
+.login-page .card h1 { font:750 30px/1.2 var(--sans); letter-spacing:-.8px; }
+.login-page .muted,.login-page .form-footer { color:#a8b8cf; }
+.login-page label { color:#d9e3f2; }
+.login-page input { color:#f5f8ff; background:#071326; border:1px solid #334b6c; border-radius:8px; }
+.login-page input::placeholder { color:#788ca8; }
+.login-page input:focus { outline:0; border-color:#37a0ff; box-shadow:0 0 0 3px #168bff25; }
+.login-page .toggle { color:#f2d33b; }
+.login-page .toggle:hover { background:#203553; }
+.login-page .primary { color:#10192a; background:linear-gradient(105deg,#f4d332,#f6e36b); border:0; border-radius:8px; box-shadow:0 8px 24px #d9ad2726; }
+.login-page .primary:hover { transform:translateY(-1px); filter:brightness(1.07); }
+.login-page .form-footer a { color:#59aaff; }
+.login-page .card-ornament svg { fill:#e5243b22; }
+.login-page :focus-visible { outline-color:#57adff; }
+@media(max-width:800px) { .login-page .intro { padding:24px 24px 0; } .login-page .intro-copy { display:block; margin:28px 0 0; } .login-page .intro-copy h2 { font-size:30px; margin:12px 0; } .login-page .intro-copy p { display:none; } .login-page .intro-copy::after { height:95px; margin:8px 0; } .login-page .scene-caption { display:none; } .login-page .intro-footer { margin:12px 0 0; } .login-page .form-area { padding:24px 16px 36px; } }
+
 
 /* Painel, formulários e detalhes: componentes do grimório. */
 .app-topbar { max-width: 1280px; flex-wrap: wrap; }
