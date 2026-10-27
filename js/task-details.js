@@ -14,9 +14,9 @@ function date(value) {
 async function refresh() {
   task = await getTask(id);
   document.getElementById('task-title').textContent = task.title;
-  document.getElementById('task-description').textContent = task.description ?? 'Sem texto adicional';
+  document.getElementById('task-description').textContent = task.description ?? 'Nenhum detalhe adicional foi registrado.';
   const status = document.getElementById('task-status');
-  status.textContent = task.completed ? 'Feita' : 'Em andamento';
+  status.textContent = task.completed ? 'Concluída' : 'Em andamento';
   status.className = `status ${task.completed ? 'done' : 'pending'}`;
   document.getElementById('created-at').textContent = date(task.created_at);
   document.getElementById('updated-at').textContent = date(task.updated_at);

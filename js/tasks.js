@@ -26,22 +26,22 @@ function renderTasks() {
   document.getElementById('no-results').hidden = allTasks.length === 0 || tasks.length !== 0;
   for (const task of tasks) {
     const card = element('article', undefined, 'task-card');
-    card.append(element('span', task.completed ? 'Guardada' : 'Em andamento', `status ${task.completed ? 'done' : 'pending'}`));
+    card.append(element('span', task.completed ? 'Concluída' : 'Em andamento', `status ${task.completed ? 'done' : 'pending'}`));
     card.append(element('h2', task.title));
-    const description = task.description || 'Sem anotação adicional';
+    const description = task.description || 'Sem detalhes adicionais no relatório.';
     card.append(element('p', description.length > 180 ? description.slice(0, 180) + '…' : description, 'task-summary'));
     const actions = element('div', undefined, 'actions');
-    for (const [label, url] of [['Visualizar', 'tarefa-detalhes.html'], ['Editar', 'tarefa.html']]) {
+    for (const [label, url] of [['Abrir relatório', 'tarefa-detalhes.html'], ['Editar', 'tarefa.html']]) {
       const link = element('a', label, 'paper-button');
       link.href = `${url}?id=${encodeURIComponent(task.id)}`;
       actions.append(link);
     }
-    for (const [kind, label] of [['complete', 'Marcar como feita'], ['delete', 'Excluir']]) {
+    for (const [kind, label] of [['complete', 'Concluir missão'], ['delete', 'Apagar']]) {
       if (kind === 'complete' && task.completed) continue;
       const button = element('button', label, kind === 'delete' ? 'paper-button danger' : 'paper-button');
       button.type = 'button';
       button.addEventListener('click', () => runTaskAction(kind, task, actions, message, refresh, async () => {
-        showMessage(message, 'Anotação excluída com sucesso.', 'success');
+        showMessage(message, 'Relatório removido do arquivo.', 'success');
         await refresh();
       }));
       actions.append(button);
@@ -69,9 +69,9 @@ async function refresh() {
 retry.addEventListener('click', refresh);
 mountProtected(async () => {
   const notices = {
-    'task-created': 'Anotação criada com sucesso.',
-    'task-updated': 'Anotação atualizada com sucesso.',
-    'task-deleted': 'Anotação excluída com sucesso.'
+    'task-created': 'Missão registrada no arquivo.',
+    'task-updated': 'Relatório de missão atualizado.',
+    'task-deleted': 'Relatório removido do arquivo.'
   };
   const notice = notices[takeNotice()];
   if (notice) showMessage(message, notice, 'success');

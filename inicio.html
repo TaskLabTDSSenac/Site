@@ -3,67 +3,67 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="MiauNote — organize suas tarefas e ideias com carinho.">
-    <title>Minhas notas · MiauNote</title>
+    <meta name="description" content="Arquivo Jujutsu — gerencie relatórios de missões e ocorrências sobrenaturais.">
+    <title>Quadro de missões · Arquivo Jujutsu</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <header class="topbar app-topbar">
-      <a class="brand" href="inicio.html" aria-label="MiauNote, início">
+      <a class="brand" href="inicio.html" aria-label="Arquivo Jujutsu, início">
           <svg class="emblem" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
             <path d="M32 3 56 16v30L32 61 8 46V16Z" stroke="currentColor"/>
             <path d="M16 29c6-2 11-1 16 3 5-4 10-5 16-3v18c-6-2-11-1-16 2-5-3-10-4-16-2Z" stroke="currentColor" stroke-width="1.8"/>
             <path d="M32 32v17M20 34l8 2m-8 4 8 2m8-6 8-2m-8 8 8-2M32 12l2.5 5.5 6 .7-4.5 4 1.2 5.8-5.2-3-5.2 3 1.2-5.8-4.5-4 6-.7Z" stroke="currentColor" stroke-linejoin="round"/>
           </svg>
-          <span class="brand-text">MiauNote<small>Seu cantinho de ideias</small></span>
+          <span class="brand-text">Arquivo Jujutsu<small>Escola Técnica de Tóquio</small></span>
         </a>
       <nav aria-label="Navegação principal">
-        <a href="inicio.html" aria-current="page">Minhas notas</a>
-        <a href="perfil.html">Meu perfil</a>
+        <a href="inicio.html" aria-current="page">Missões</a>
+        <a href="perfil.html">Registro do feiticeiro</a>
       </nav>
       <div class="header-session">
         <span id="header-user"></span>
-        <button id="logout" class="secondary" type="button">Sair</button>
+        <button id="logout" class="secondary" type="button">Encerrar sessão</button>
       </div>
     </header>
     <main class="workspace app-workspace">
-      <div id="loading" class="loading" role="status" aria-live="polite">Validando sua sessão…</div>
+      <div id="loading" class="loading" role="status" aria-live="polite">Verificando credencial de feiticeiro…</div>
       <div id="message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
       <button id="retry" class="secondary" type="button" hidden>Tentar novamente</button>
       <section id="content" hidden>
         <div class="page-heading">
           <div>
-            <span class="eyebrow">Um carinho de cada vez</span>
-            <h1>Meu cantinho de notas</h1>
-            <p class="muted">Organize suas ideias e deixe espaço para novas descobertas.</p>
+            <span class="eyebrow">Escola Técnica de Jujutsu · Tóquio</span>
+            <h1>Quadro de missões</h1>
+            <p class="muted">Relatórios de campo e ocorrências amaldiçoadas sob sua responsabilidade.</p>
           </div>
-          <a class="primary fit-button" href="tarefa.html">＋ Nova anotação</a>
+          <a class="primary fit-button" href="tarefa.html">＋ Registrar missão</a>
         </div>
         <div id="task-message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
-        <p id="tasks-loading" class="loading" role="status" aria-live="polite" hidden>Carregando tarefas…</p>
+        <p id="tasks-loading" class="loading" role="status" aria-live="polite" hidden>Consultando registros de missão…</p>
         <button id="tasks-retry" class="secondary" type="button" hidden>Tentar novamente</button>
         <div id="empty" class="account-card empty-state" hidden>
-          <h2>Seu cantinho está quietinho</h2>
-          <p>Adicione uma anotação e comece a guardar suas ideias.</p>
-          <a class="paper-button" href="tarefa.html">＋ Criar anotação</a>
+          <h2>Nenhuma missão registrada</h2>
+          <p>Registre uma ocorrência ou missão designada pela escola.</p>
+          <a class="paper-button" href="tarefa.html">＋ Registrar missão</a>
         </div>
-        <label class="search-box" for="note-search"><span aria-hidden="true">⌕</span><input id="note-search" type="search" aria-label="Buscar anotações" placeholder="Buscar nas suas anotações..." autocomplete="off"><span class="search-paw" aria-hidden="true">🐾</span></label>
-        <p id="no-results" class="muted no-results" hidden>Nenhuma anotação combina com essa busca. 🐈</p>
+        <label class="search-box" for="note-search"><span aria-hidden="true">⌕</span><input id="note-search" type="search" aria-label="Buscar missões" placeholder="Buscar nos relatórios de missão..." autocomplete="off"><span class="search-paw" aria-hidden="true">呪</span></label>
+        <p id="no-results" class="muted no-results" hidden>Nenhum registro corresponde a essa busca.</p>
         <div id="task-list" class="task-list"></div>
       </section>
       <footer class="home-footer">
-        <a href="inicio.html">Voltar para minhas notas</a>
-        <p>Um espaço aconchegante para suas ideias. 🐾</p>
+        <a href="inicio.html">Voltar ao quadro de missões</a>
+        <p>Arquivo confidencial · Escola Técnica de Jujutsu de Tóquio</p>
       </footer>
     </main>
     
     <dialog id="delete-dialog" aria-labelledby="delete-heading" aria-describedby="delete-description">
       <form method="dialog">
-        <h2 id="delete-heading">Excluir anotação?</h2>
-        <p id="delete-description">Esta ação não pode ser desfeita. Anotação: <strong id="delete-title"></strong></p>
+        <h2 id="delete-heading">Apagar relatório?</h2>
+        <p id="delete-description">Esta ação não pode ser desfeita. Registro: <strong id="delete-title"></strong></p>
         <div class="actions">
           <button class="paper-button" value="cancel" autofocus>Cancelar</button>
-          <button class="paper-button danger" value="delete">Excluir anotação</button>
+          <button class="paper-button danger" value="delete">Apagar registro</button>
         </div>
       </form>
     </dialog>

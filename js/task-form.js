@@ -19,7 +19,7 @@ title.addEventListener('input', counts);
 description.addEventListener('input', counts);
 mountProtected(async () => {
   id = taskId(false);
-  document.getElementById('page-title').textContent = id ? 'Editar anotação' : 'Nova anotação';
+  document.getElementById('page-title').textContent = id ? 'Editar relatório' : 'Nova missão';
   if (id) {
     const task = await getTask(id);
     title.value = task.title;
@@ -34,7 +34,7 @@ form.addEventListener('submit', async event => {
   if (title.value.trim().length < 3 || title.value.trim().length > 150) title.setCustomValidity('Informe um título entre 3 e 150 caracteres após remover espaços das extremidades.');
   if (description.value.length > 500) description.setCustomValidity('A descrição deve ter no máximo 500 caracteres.');
   if (!form.reportValidity()) return;
-  setBusy(save, true, 'Salvar');
+  setBusy(save, true, 'Arquivar relatório');
   showMessage(message, '');
   const data = { title: title.value.trim(), description: description.value || null };
   try {
@@ -43,6 +43,6 @@ form.addEventListener('submit', async event => {
     setNotice(id ? 'task-updated' : 'task-created');
     window.location.replace('inicio.html');
   } catch (error) {
-    if (error.status !== 401) showMessage(message, error.status === 404 ? 'Esta anotação não está mais disponível. Volte para minhas notas.' : error.message);
-  } finally { setBusy(save, false, 'Salvar'); }
+    if (error.status !== 401) showMessage(message, error.status === 404 ? 'Este relatório não está mais disponível. Volte ao quadro de missões.' : error.message);
+  } finally { setBusy(save, false, 'Arquivar relatório'); }
 });

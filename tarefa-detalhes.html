@@ -3,36 +3,36 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="MiauNote — detalhes da sua anotação.">
-    <title>Detalhes da anotação · MiauNote</title>
+    <meta name="description" content="Arquivo Jujutsu — detalhes do relatório de missão.">
+    <title>Relatório de campo · Arquivo Jujutsu</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <header class="topbar app-topbar">
-      <a class="brand" href="inicio.html" aria-label="MiauNote, início">
+      <a class="brand" href="inicio.html" aria-label="Arquivo Jujutsu, início">
           <svg class="emblem" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
             <path d="M32 3 56 16v30L32 61 8 46V16Z" stroke="currentColor"/>
             <path d="M16 29c6-2 11-1 16 3 5-4 10-5 16-3v18c-6-2-11-1-16 2-5-3-10-4-16-2Z" stroke="currentColor" stroke-width="1.8"/>
             <path d="M32 32v17M20 34l8 2m-8 4 8 2m8-6 8-2m-8 8 8-2M32 12l2.5 5.5 6 .7-4.5 4 1.2 5.8-5.2-3-5.2 3 1.2-5.8-4.5-4 6-.7Z" stroke="currentColor" stroke-linejoin="round"/>
           </svg>
-          <span class="brand-text">MiauNote<small>Seu cantinho de ideias</small></span>
+          <span class="brand-text">Arquivo Jujutsu<small>Escola Técnica de Tóquio</small></span>
         </a>
       <nav aria-label="Navegação principal">
-        <a href="inicio.html">Minhas notas</a>
-        <a href="perfil.html">Meu perfil</a>
+        <a href="inicio.html">Missões</a>
+        <a href="perfil.html">Registro do feiticeiro</a>
       </nav>
       <div class="header-session">
         <span id="header-user"></span>
-        <button id="logout" class="secondary" type="button">Sair</button>
+        <button id="logout" class="secondary" type="button">Encerrar sessão</button>
       </div>
     </header>
     <main class="workspace app-workspace">
-      <div id="loading" class="loading" role="status" aria-live="polite">Validando sua sessão…</div>
+      <div id="loading" class="loading" role="status" aria-live="polite">Verificando credencial de feiticeiro…</div>
       <div id="message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
       <button id="retry" class="secondary" type="button" hidden>Tentar novamente</button>
       <section id="content" hidden>
-        <span class="eyebrow">Uma ideia guardadinha</span>
-        <h1>Detalhes da anotação</h1>
+        <span class="eyebrow">Arquivo confidencial · Escola Técnica</span>
+        <h1>Relatório de campo</h1>
         <div id="task-message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
         <article class="account-card task-detail">
           <span id="task-status" class="status"></span>
@@ -44,25 +44,25 @@
           </dl>
           <div id="task-actions" class="actions">
             <a id="edit-task" class="paper-button" href="tarefa.html">Editar</a>
-            <button id="complete-task" class="paper-button" type="button">Marcar como feita</button>
-            <button id="delete-task" class="paper-button danger" type="button">Excluir anotação</button>
-            <a class="paper-button" href="inicio.html">Voltar</a>
+            <button id="complete-task" class="paper-button" type="button">Concluir missão</button>
+            <button id="delete-task" class="paper-button danger" type="button">Apagar relatório</button>
+            <a class="paper-button" href="inicio.html">Voltar às missões</a>
           </div>
         </article>
       </section>
       <footer class="home-footer">
-        <a href="inicio.html">Voltar para minhas notas</a>
-        <p>Um espaço aconchegante para suas ideias. 🐾</p>
+        <a href="inicio.html">Voltar ao quadro de missões</a>
+        <p>Arquivo confidencial · Escola Técnica de Jujutsu de Tóquio</p>
       </footer>
     </main>
     
     <dialog id="delete-dialog" aria-labelledby="delete-heading" aria-describedby="delete-description">
       <form method="dialog">
-        <h2 id="delete-heading">Excluir anotação?</h2>
-        <p id="delete-description">Esta ação não pode ser desfeita. Anotação: <strong id="delete-title"></strong></p>
+        <h2 id="delete-heading">Apagar relatório?</h2>
+        <p id="delete-description">Esta ação não pode ser desfeita. Registro: <strong id="delete-title"></strong></p>
         <div class="actions">
           <button class="paper-button" value="cancel" autofocus>Cancelar</button>
-          <button class="paper-button danger" value="delete">Excluir anotação</button>
+          <button class="paper-button danger" value="delete">Apagar registro</button>
         </div>
       </form>
     </dialog>

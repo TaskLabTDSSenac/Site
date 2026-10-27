@@ -5,7 +5,7 @@ const button = form.querySelector('[type=submit]');
 const message = document.getElementById('message');
 setupPasswordToggles();
 const notice = takeNotice();
-if (notice === 'registered') showMessage(message, 'Conta criada com sucesso. Faça login para continuar.', 'success');
+if (notice === 'registered') showMessage(message, 'Registro de feiticeiro criado. Acesse o arquivo para continuar.', 'success');
 if (notice === 'expired') showMessage(message, 'Sua sessão expirou. Faça login novamente.');
 async function checkSession() {
   if (!getToken()) return;

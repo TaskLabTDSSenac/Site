@@ -25,7 +25,7 @@ form.addEventListener('submit', async event => {
     return;
   }
   button.disabled = true;
-  button.textContent = 'Criando conta…';
+  button.textContent = 'Registrando feiticeiro…';
   showMessage(message, '');
   try {
     await request('/auth/register', { method: 'POST', data: {
@@ -36,5 +36,5 @@ form.addEventListener('submit', async event => {
     form.reset();
     window.location.replace('index.html');
   } catch (error) { showMessage(message, error.message); }
-  finally { button.disabled = false; button.textContent = 'Criar conta'; }
+  finally { button.disabled = false; button.textContent = 'Registrar'; }
 });

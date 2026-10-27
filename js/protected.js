@@ -27,7 +27,7 @@ export function mountProtected(load) {
       content.hidden = false;
     } catch (error) {
       if (error.status !== 401) {
-        showMessage(message, error.status === 404 ? 'Esta anotação não está disponível. Volte para minhas notas.' : error.message);
+        showMessage(message, error.status === 404 ? 'Este registro não está disponível. Volte ao quadro de missões.' : error.message);
         retry.hidden = error.status === 404;
       }
     } finally { loading.hidden = true; busy = false; }
@@ -43,7 +43,7 @@ export function taskId(required = true) {
   if (!parameters.has('id') && !required) return null;
   const id = parameters.get('id');
   if (!id || !/^[1-9]\d*$/.test(id) || id.length > 19 || BigInt(id) > 9223372036854775807n) {
-    throw new Error('Identificador de anotação inválido. Volte para minhas notas.');
+    throw new Error('Identificador de missão inválido. Volte ao quadro de missões.');
   }
   return id;
 }

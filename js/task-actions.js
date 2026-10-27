@@ -38,7 +38,7 @@ export async function runTaskAction(kind, task, group, message, refresh, onDelet
         }
         throw error;
       }
-      showMessage(message, 'Anotação marcada como feita.', 'success');
+      showMessage(message, 'Missão marcada como concluída.', 'success');
       await refresh();
     }
   } catch (error) {
