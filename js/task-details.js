@@ -21,7 +21,7 @@ async function refresh() {
   document.getElementById('created-at').textContent = date(task.created_at);
   document.getElementById('updated-at').textContent = date(task.updated_at);
   document.getElementById('edit-task').href = `tarefa.html?id=${encodeURIComponent(task.id)}`;
-  complete.hidden = task.completed;
+  complete.hidden = false;
 }
 for (const [button, kind] of [[complete, 'complete'], [document.getElementById('delete-task'), 'delete']]) {
   button.addEventListener('click', () => runTaskAction(kind, task, actions, message, refresh, () => {

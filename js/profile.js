@@ -49,7 +49,6 @@ personal.addEventListener('submit', async event => {
 passwords.addEventListener('submit', async event => {
   event.preventDefault();
   if (savePassword.disabled) return;
-  if (next.value !== confirm.value) confirm.setCustomValidity('A confirmação deve ser igual à nova senha.');
   if (!passwords.reportValidity()) return;
   setBusy(savePassword, true, 'Alterar senha', 'Alterando…');
   showMessage(passwordMessage, '');

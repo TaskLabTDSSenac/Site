@@ -14,14 +14,9 @@ form.addEventListener('submit', async event => {
     form.elements.namedItem('name').focus();
     return;
   }
-  if (password.length < 8 || password.length > 128) {
+  if (password.length < 6 || password.length > 128) {
     showMessage(message, 'A senha deve ter entre 8 e 128 caracteres.');
     form.password.focus();
-    return;
-  }
-  if (password !== form.confirm_password.value) {
-    showMessage(message, 'A confirmação de senha deve ser igual à senha.');
-    form.confirm_password.focus();
     return;
   }
   button.disabled = true;

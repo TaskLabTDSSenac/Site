@@ -21,6 +21,7 @@ mountProtected(async () => {
   id = taskId(false);
   document.getElementById('page-title').textContent = id ? 'Editar uma missão' : 'Uma nova missão';
   if (id) {
+    title.removeAttribute('maxlength');
     const task = await getTask(id);
     title.value = task.title;
     description.value = task.description ?? '';
@@ -31,12 +32,15 @@ mountProtected(async () => {
 form.addEventListener('submit', async event => {
   event.preventDefault();
   if (!ready || save.disabled) return;
-  if (title.value.trim().length < 3 || title.value.trim().length > 150) title.setCustomValidity('Informe um título entre 3 e 150 caracteres após remover espaços das extremidades.');
+  const trimmed = title.value.trim();
+  const whitespaceCreation = !id && title.value.length > 0 && trimmed.length === 0 && title.value.length <= 150;
+  title.setCustomValidity('');
+  if (!whitespaceCreation && (trimmed.length < 3 || (!id && trimmed.length > 150))) title.setCustomValidity('Informe um título entre 3 e 150 caracteres após remover espaços das extremidades.');
   if (description.value.length > 500) description.setCustomValidity('A descrição deve ter no máximo 500 caracteres.');
   if (!form.reportValidity()) return;
   setBusy(save, true, 'Salvar');
   showMessage(message, '');
-  const data = { title: title.value.trim(), description: description.value || null };
+  const data = { title: title.value, description: description.value || null };
   try {
     if (id) await updateTask(id, data);
     else await createTask(data);
