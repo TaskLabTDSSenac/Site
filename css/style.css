@@ -264,3 +264,66 @@ dialog p { overflow-wrap: anywhere; }
   .header-session { width: 100%; justify-content: space-between; }
   #header-user { max-width: 210px; }
 }
+
+/* Vice City-inspired interface refresh */
+:root {
+  --night: #101224;
+  --night-light: #1b1d35;
+  --gold: #f07a91;
+  --gold-bright: #ffb6aa;
+  --paper: #fff4e8;
+  --paper-light: #fffaf4;
+  --ink: #252033;
+  --muted: #625b6d;
+  --line: #d9b3aa;
+  --shadow: 0 24px 65px #0808138c;
+}
+html {
+  min-height: 100%;
+  background: #101224;
+}
+body {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  background: transparent !important;
+}
+body::before {
+  content: '';
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(135deg, #10122455, #10122435 48%, #10122470), url('../assets/gta-vi-background.jpg') center / cover no-repeat;
+  pointer-events: none;
+}
+.intro { isolation: isolate; }
+.intro::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(135deg, #ec668b16, transparent 55%), linear-gradient(0deg, #10122470, transparent 55%);
+  pointer-events: none;
+}
+.brand-text { font-family: var(--sans); font-weight: 850; letter-spacing: 2px; text-transform: uppercase; }
+.brand small { letter-spacing: 2px; text-transform: uppercase; }
+.eyebrow { color: #ffb6aa; letter-spacing: 3px; }
+.intro h2, .workspace h1 { font-family: var(--sans); font-weight: 850; letter-spacing: -1.5px; text-transform: uppercase; text-shadow: 0 3px 20px #09091699; }
+.card, .account-card {
+  background: linear-gradient(145deg, #fffaf4f5, #f9e8e0f5);
+  border-color: #ef9aaa;
+  box-shadow: var(--shadow), inset 0 0 0 5px #fffaf4, inset 0 0 0 6px #e99da766;
+  backdrop-filter: blur(12px);
+}
+.primary { border-color: #d9577a; background: linear-gradient(110deg, #f27b91, #ffb7a9 55%, #f27b91); color: #291522; text-transform: uppercase; letter-spacing: .6px; }
+.primary:hover { background: #ffc2b5; border-color: #bd3c64; }
+.secondary { background: #211d37; border-color: #e9889a; color: #ffc0b5; }
+.secondary:hover { background: #312441; }
+.topbar { border-bottom-color: #f49cac55; }
+.app-topbar nav a, .home-footer a { color: #ffc0b5; }
+.task-card { background: linear-gradient(145deg, #fffaf4f5, #f9e8e0f5); border-color: #ef9aaa; backdrop-filter: blur(10px); }
+.status.pending { background: #fff0cb; }
+@media (max-width: 800px) {
+  body::before { background-position: 58% center; }
+  .card, .account-card { backdrop-filter: none; }
+}
