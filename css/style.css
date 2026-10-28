@@ -264,3 +264,75 @@ dialog p { overflow-wrap: anywhere; }
   .header-session { width: 100%; justify-content: space-between; }
   #header-user { max-width: 210px; }
 }
+
+/* Castlevania: pedra escura, vinho profundo e prata sob o luar. */
+:root {
+  --night: #100d12;
+  --night-light: #211820;
+  --gold: #a34b53;
+  --gold-bright: #e0b7b3;
+  --paper: #211a20;
+  --paper-light: #30242b;
+  --ink: #f0e6e4;
+  --muted: #c3b0b1;
+  --line: #63464e;
+  --error: #ffb4a9;
+  --success: #b6d4b5;
+  color: var(--ink);
+  background: var(--night);
+}
+body {
+  background: radial-gradient(ellipse at 17% 32%, #4d202b80, transparent 48%),
+    radial-gradient(ellipse at 82% 85%, #30203070, transparent 45%), var(--night);
+}
+.brand small { color: #d2bfc1; }
+.intro p, .workspace > section > .muted, .page-heading .muted { color: #d0c0c2; }
+.intro h2, .workspace h1 { color: #f6e9e8; }
+.castle { filter: sepia(.3) hue-rotate(290deg) saturate(.8); }
+.scene-caption { color: #d5babc; }
+.card, .account-card, .task-card, dialog {
+  color: var(--ink);
+  background: radial-gradient(ellipse at top, #382832, transparent 75%), #211a20;
+  border-color: #82525c;
+  box-shadow: var(--shadow), inset 0 0 0 5px #211a20, inset 0 0 0 6px #a3566340;
+}
+.card-ornament { color: #d29498; }
+.card-ornament span { background: #8d5b65; }
+.card h1, dialog h2 { color: #f5e8e6; }
+.muted, .profile-head p, .account-note, .task-summary, .dates dt, .optional, .hint, .form-footer { color: var(--muted); }
+input, textarea {
+  color: #f4e9e8;
+  background: #171217;
+  border-color: #73515a;
+}
+input::placeholder { color: #bca9ab; }
+input[readonly] { background: #30252b; }
+.toggle { color: #efbfc1; }
+.toggle:hover { background: #493039; }
+.primary {
+  color: #fff3f1;
+  border-color: #a34b53;
+  background: linear-gradient(110deg, #792b38, #a84650, #792b38);
+  box-shadow: 0 3px 12px #08050880;
+}
+.primary:hover { background: #b54e59; border-color: #dc8588; }
+.primary:disabled { background: #49383c; color: #cbbabd; }
+.secondary { background: #211820; border-color: #9b646d; color: #f0c5c5; }
+.secondary:hover { background: #38242d; }
+.paper-button { background: #30232a; border-color: #83545d; color: #f0dddd; }
+.paper-button:hover { background: #493039; }
+.danger { color: #ffbbb2; border-color: #b65e59; }
+.notice { background: #49252a; color: #ffd1c8; border-color: #bc7168; }
+.notice[data-kind="success"] { background: #26352a; color: #c4e0c0; border-color: #6c9473; }
+.status.pending { background: #483323; color: #f1d4a0; border-color: #967447; }
+.status.done { background: #26352a; color: #c4e0c0; border-color: #6c9473; }
+.pending-note { color: #f2d7af; background: #3a2e27; border-left-color: #a34b53; }
+.connected { color: #c4e0c0; background: #26352a; border-color: #6c9473; }
+.avatar { color: #f0c5c5; background: #211820; border-color: #9b646d; }
+.topbar { border-bottom-color: #a34b5345; }
+.app-topbar nav a, .home-footer a { color: #efbfc1; }
+#header-user, .loading { color: #d2bfc1; }
+:focus-visible { outline-color: #ec9299; }
+@media (prefers-reduced-motion: no-preference) {
+  .primary, .secondary, .paper-button, input, textarea, a { transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease; }
+}
