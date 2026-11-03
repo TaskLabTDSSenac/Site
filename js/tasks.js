@@ -59,8 +59,38 @@ async function refresh() {
   document.getElementById('tasks-loading').hidden = false;
   retry.hidden = true;
   try {
+<<<<<<< HEAD
     allTasks = await listTasks();
     renderTasks();
+=======
+    const tasks = await listTasks();
+    list.replaceChildren();
+    document.getElementById('empty').hidden = tasks.length !== 0;
+    for (const task of tasks) {
+      const card = element('article', undefined, 'task-card');
+      card.append(element('span', task.completed ? 'Concluída' : 'Pendente', `status ${task.completed ? 'done' : 'pending'}`));
+      card.append(element('h2', task.title));
+      const description = task.description || 'Sem descrição';
+      card.append(element('p', description.length > 180 ? description.slice(0, 180) + '…' : description, 'task-summary'));
+      const actions = element('div', undefined, 'actions');
+      for (const [label, url] of [['Visualizar', 'tarefa-detalhes.html'], ['Editar', 'tarefa.html']]) {
+        const link = element('a', label, 'paper-button');
+        link.href = `${url}?id=${encodeURIComponent(task.id)}`;
+        actions.append(link);
+      }
+      for (const [kind, label] of [['complete', 'Concluir'], ['delete', 'Excluir']]) {
+        const button = element('button', label, kind === 'delete' ? 'paper-button danger' : 'paper-button');
+        button.type = 'button';
+        button.addEventListener('click', () => runTaskAction(kind, task, actions, message, refresh, async () => {
+          showMessage(message, 'Tarefa excluída com sucesso.', 'success');
+          await refresh();
+        }));
+        actions.append(button);
+      }
+      card.append(actions);
+      list.append(card);
+    }
+>>>>>>> bb43da8b10186a9e980237d56949e8215938e982
   } catch (error) {
     if (error.status !== 401) { showMessage(message, error.message); retry.hidden = false; }
   } finally { loading = false; document.getElementById('tasks-loading').hidden = true; }
