@@ -264,3 +264,55 @@ dialog p { overflow-wrap: anywhere; }
   .header-session { width: 100%; justify-content: space-between; }
   #header-user { max-width: 210px; }
 }
+
+/* Tema de Natal: pinho, cranberry e luzes douradas. */
+:root {
+  --night: #10251f;
+  --night-light: #1b392e;
+  --gold: #c9a45c;
+  --gold-bright: #f0d58e;
+  --paper: #f5eadb;
+  --paper-light: #fff8ed;
+  --line: #b9a583;
+  --success: #285538;
+}
+body {
+  background:
+    radial-gradient(ellipse at 14% 35%, #315c4380, transparent 55%),
+    radial-gradient(ellipse at 90% 8%, #8b303024, transparent 34%),
+    var(--night);
+}
+.intro {
+  background-image: radial-gradient(circle at 8% 12%, #f0d58e 0 1px, transparent 2px),
+    radial-gradient(circle at 86% 17%, #f0d58e 0 1px, transparent 2px),
+    radial-gradient(circle at 75% 70%, #f0d58e 0 1px, transparent 2px);
+}
+.brand { color: var(--gold-bright); }
+.brand small { color: #e0d5c1; }
+.eyebrow { color: #e3bf76; }
+.intro h2, .workspace h1 { color: #fff0d4; }
+.intro p, .workspace > section > .muted { color: #c5d2c8; }
+.castle { filter: drop-shadow(0 8px 22px #050d1880); }
+.primary {
+  border-color: #8f2e34;
+  background: linear-gradient(110deg, #a9363d, #c14a43, #a9363d);
+  color: #fff8ed;
+}
+.primary:hover { background: #cb5148; border-color: #76232a; }
+.secondary {
+  background: #17382e;
+  border-color: #bd9d58;
+  color: #f0d58e;
+}
+.secondary:hover { background: #244b3c; }
+.topbar { border-bottom-color: #c9a45c55; }
+.app-topbar nav a, .home-footer a { color: #f0d58e; }
+.avatar { background: #214235; border-color: #bd9d58; color: #f0d58e; }
+.house-colors span { background: #a9363d; }
+.house-colors span:nth-child(2) { background: #d5b66b; }
+.house-colors span:nth-child(3) { background: #315d47; }
+.house-colors span:nth-child(4) { background: #f0e4d1; }
+.status.done { background: #e2e9d4; color: #285538; border-color: #879877; }
+@media (prefers-reduced-motion: no-preference) {
+  .brand .emblem { filter: drop-shadow(0 0 6px #f0d58e50); }
+}
