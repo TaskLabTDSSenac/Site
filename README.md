@@ -101,8 +101,8 @@ ou 500 preserva o token e oferece nova tentativa. O logout é apenas local.
 Erros textuais e listas 422 são tratados com mensagens em português; não se
 exibem objetos brutos ou detalhes internos de erros 500.
 
-O visual preserva azul-noturno, dourado, pergaminhos e o emblema original de livro
-e estrela. SVGs são decorativos e fontes são locais. Há labels visíveis, foco
+O visual combina fundo petróleo, acentos coral e amarelo, painéis claros e o
+emblema original de livro e estrela. SVGs são decorativos e fontes são locais. Há labels visíveis, foco
 evidente, mensagens com aria-live, navegação por teclado e respeito à preferência
 por movimento reduzido. A navegação e as ações se adaptam a telas de 360px.
 
