@@ -264,3 +264,107 @@ dialog p { overflow-wrap: anywhere; }
   .header-session { width: 100%; justify-content: space-between; }
   #header-user { max-width: 210px; }
 }
+
+/* Destaque pessoal de Beowulf na tela inicial. */
+.home-page {
+  --night: #100b0d;
+  --night-light: #241316;
+  --gold: #bd2c32;
+  --gold-bright: #ff6566;
+  --paper: #f2e9e7;
+  --paper-light: #fff8f6;
+  background: radial-gradient(ellipse at 75% 24%, #671a2275, transparent 42%), #100b0d;
+}
+.home-page .topbar { border-bottom-color: #c33b4438; }
+.home-page .emblem { color: #ed454d; }
+.home-page .app-topbar nav a[aria-current="page"] { color: #ff7478; }
+.home-page .workspace { max-width: 1060px; margin-top: 44px; }
+.home-page .workspace h1 { color: #fff0ef; }
+.home-page .page-heading .muted { color: #c4aeb0; }
+.home-page .primary { color: #fff; border-color: #ff5a61; background: linear-gradient(110deg, #a91420, #e13943, #a91420); box-shadow: 0 8px 24px #b21d2c45; }
+.home-page .primary:hover { background: #ed424d; }
+.beowulf-feature {
+  min-height: 260px;
+  margin: 30px 0 28px;
+  padding: 30px clamp(24px, 5vw, 58px);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr minmax(180px, 34%);
+  align-items: center;
+  gap: 20px;
+  color: #fff2f0;
+  border: 1px solid #bc343a;
+  border-radius: 14px;
+  background: radial-gradient(ellipse at 78% 44%, #aa252d80, transparent 40%), linear-gradient(115deg, #160c10, #351016 58%, #170b0e);
+  box-shadow: 0 20px 48px #0008, inset 0 0 0 4px #ed40451a;
+}
+.beowulf-feature::before { content: ""; position: absolute; inset: 12px; border: 1px solid #f35b5b42; border-radius: 9px; pointer-events: none; }
+.beowulf-copy { z-index: 1; max-width: 540px; }
+.beowulf-kicker, .beowulf-tag { color: #ff7779; font-size: 10px; font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase; }
+.beowulf-copy h2 { margin: 9px 0 8px; font: normal clamp(30px, 4vw, 48px)/1.05 var(--serif); color: #fff5f2; }
+.beowulf-copy p { max-width: 420px; color: #d2bfc0; font-size: 14px; }
+.beowulf-tag { display: inline-block; margin-top: 10px; font-size: 9px; letter-spacing: 1.7px; }
+.beowulf-tag i { padding: 0 6px; font-style: normal; color: #f2c4c2; }
+.beowulf-art { z-index: 1; width: 100%; margin: 0; text-align: center; }
+.beowulf-art img { display: block; width: 100%; max-width: 260px; aspect-ratio: 16/9; margin: auto; object-fit: cover; object-position: center 28%; border: 1px solid #f26768; border-radius: 8px; box-shadow: 0 10px 30px #0009; }
+.beowulf-art figcaption { margin-top: 8px; color: #f0d2cf; font: italic 12px var(--serif); }
+.feature-mark { position: absolute; right: 27%; bottom: -75px; color: #ff3e4a0a; font: bold 330px/.8 var(--serif); pointer-events: none; }
+.home-page .task-card, .home-page .account-card { border-color: #b53a40; }
+.home-page .home-footer { color: #bfa8aa; }
+.home-page .home-footer a { color: #ff7779; }
+@media (max-width: 600px) {
+  .home-page .workspace { margin-top: 30px; }
+  .beowulf-feature { grid-template-columns: 1fr; gap: 16px; padding: 26px; }
+  .beowulf-art img { max-width: 100%; }
+  .feature-mark { right: -22px; bottom: 80px; font-size: 240px; }
+}
+
+
+/* Identidade Skullgirls aplicada apenas à tela de login. */
+.skullgirls-login { --night: #170d19; --night-light: #321528; --gold: #e14f72; --gold-bright: #ff9caf; --paper: #f7e8e2; --paper-light: #fff6f0; --ink: #291522; --muted: #735363; --line: #d49aaa; background: radial-gradient(ellipse at 18% 45%, #702744 0, transparent 54%), radial-gradient(ellipse at 80% 12%, #491c3b 0, transparent 43%), #170d19; }
+.skullgirls-login .intro { background: linear-gradient(145deg, #1b0e1d 15%, #351326 68%, #571b36); border-right: 1px solid #e14f7240; }
+.skullgirls-login .intro::before { content: 'SKULLGIRLS'; position: absolute; inset: auto auto 12% 2%; color: #f6bfd0; opacity: .055; font: 900 clamp(48px, 9vw, 130px)/1 var(--sans); letter-spacing: .08em; transform: rotate(-8deg); pointer-events: none; }
+.skullgirls-login .intro h2 { color: #fff0ef; text-shadow: 3px 3px 0 #8a284b; }
+.skullgirls-login .intro p, .skullgirls-login .intro-footer { color: #e0c4d1; }
+.skullgirls-login .eyebrow { color: #ff9caf; }
+.skullgirls-login .castle { filter: drop-shadow(0 8px 20px #ec477a35); }
+.skullgirls-login .castle > circle:first-child { fill: #f06a88; }
+.skullgirls-login .castle > circle:nth-child(2) { fill: #211020; }
+.skullgirls-login .castle g { stroke: #f18ca4; }
+.skullgirls-login .castle g[fill] { fill: #f1a5b7; }
+.skullgirls-login .scene-caption { color: #f0bfca; }
+.skullgirls-login .card { border-color: #d35c7e; box-shadow: 0 24px 65px #0008, inset 0 0 0 5px var(--paper), inset 0 0 0 6px #d35c7e55; }
+.skullgirls-login .card-ornament { color: #a72e55; }
+.skullgirls-login .card-ornament span { background: #d88ba0; }
+.skullgirls-login .card h1 { color: #43182e; }
+.skullgirls-login input { background: #fffaf7; border-color: #c99aaa; }
+.skullgirls-login input:focus { border-color: #a42b52; }
+.skullgirls-login .toggle { color: #922344; }
+.skullgirls-login .toggle:hover { background: #f5d8df; }
+.skullgirls-login .primary { border-color: #9e2449; background: linear-gradient(110deg, #b72d58, #ee6685, #c5345f); color: #fff8f4; box-shadow: 0 4px 12px #7d173644; text-transform: uppercase; letter-spacing: 1.2px; }
+.skullgirls-login .primary:hover { background: #f17792; border-color: #7d1736; }
+.skullgirls-login .form-footer a { color: #96274b; }
+.skullgirls-login :focus-visible { outline-color: #bb365f; }
+
+
+/* Logo e personagens oficiais na experiência de login. */
+.skullgirls-login .intro { background-image: linear-gradient(145deg, #1b0e1ded 15%, #351326e8 68%, #571b36e8), url('https://skullgirlsmobile.com/wp-uploads/2017/05/logo-big-1.png'); background-repeat: no-repeat; background-position: center, 50% 48%; background-size: cover, min(82%, 600px) auto; }
+.skullgirls-login .intro::before { content: none; }
+.skullgirls-login .character-gallery { display: flex; justify-content: center; align-items: end; gap: clamp(8px, 2vw, 22px); width: 100%; height: clamp(120px, 20vw, 220px); margin: 10px auto 0; overflow: hidden; }
+.skullgirls-login .character-gallery img { max-width: 30%; width: auto; height: 100%; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 8px 10px #0008); }
+.skullgirls-login .character-gallery img:nth-child(2) { height: 88%; }
+.skullgirls-login .scene-caption { margin-top: 8px; color: #ffd2dc; }
+.skullgirls-login .intro-copy { position: relative; z-index: 1; }
+.skullgirls-login .brand { color: #ff9caf; }
+.skullgirls-login .brand small { color: #f1c9d5; }
+.skullgirls-login .card { color: #43182e; }
+.skullgirls-login label { color: #57203a; }
+.skullgirls-login .muted, .skullgirls-login .form-footer { color: #735363; }
+.skullgirls-login .notice { color: #852d28; }
+@media (max-width: 800px) { .skullgirls-login .character-gallery { height: 120px; } .skullgirls-login .intro { background-size: cover, min(88%, 420px) auto; } }
+
+
+/* Emblema do usuário centralizado no cartão de login. */
+.skullgirls-login .login-center-logo { display: block; width: min(100%, 148px); aspect-ratio: 1; object-fit: contain; margin: 0 auto 16px; border-radius: 50%; }
+@media (max-width: 800px) { .skullgirls-login .login-center-logo { width: 112px; margin-bottom: 12px; } }
