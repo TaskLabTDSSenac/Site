@@ -7,8 +7,8 @@
     <title>Salvar tarefa · TaskLab</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body>
-    <header class="topbar app-topbar">
+  <body class="task-form-page">
+    <header class="topbar app-topbar"><a class="appbar-back" href="inicio.html" aria-label="Voltar às missões">←</a>
       <a class="brand" href="inicio.html" aria-label="TaskLab, início">
           <svg class="emblem" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
             <path d="M32 3 56 16v30L32 61 8 46V16Z" stroke="currentColor"/>
@@ -36,7 +36,7 @@
         <form id="task-form" class="account-card editor">
           <div id="form-message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
           <div class="form-field">
-            <label for="title">Título</label>
+            <label for="title">Nome da missão</label>
             <input id="title" name="title" required maxlength="150" aria-describedby="title-count">
             <small id="title-count" class="hint">0/150 caracteres</small>
           </div>
@@ -46,7 +46,7 @@
             <small id="description-count" class="hint">0/500 caracteres</small>
           </div>
           <div class="actions">
-            <button id="save-task" class="primary fit-button" type="submit">Salvar</button>
+            <button id="save-task" class="primary fit-button" type="submit">Registrar missão</button>
             <a class="paper-button" href="inicio.html">Cancelar</a>
           </div>
         </form>

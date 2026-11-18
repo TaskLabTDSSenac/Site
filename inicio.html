@@ -7,7 +7,7 @@
     <title>Minhas tarefas · TaskLab</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body>
+  <body class="home-page">
     <header class="topbar app-topbar">
       <a class="brand" href="inicio.html" aria-label="TaskLab, início">
           <svg class="emblem" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
@@ -34,18 +34,18 @@
         <div class="page-heading">
           <div>
             <span class="eyebrow">Uma missão de cada vez</span>
-            <h1>Meu grimório de tarefas</h1>
-            <p class="muted">Organize suas missões e acompanhe sua jornada.</p>
+            <h1>Quadro de missões</h1>
+
           </div>
-          <a class="primary fit-button" href="tarefa.html">Criar tarefa</a>
+          <a class="primary fit-button" href="tarefa.html">Nova missão</a>
         </div>
         <div id="task-message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
         <p id="tasks-loading" class="loading" role="status" aria-live="polite" hidden>Carregando tarefas…</p>
         <button id="tasks-retry" class="secondary" type="button" hidden>Tentar novamente</button>
         <div id="empty" class="account-card empty-state" hidden>
-          <h2>Uma página em branco</h2>
-          <p>Seu grimório ainda não possui tarefas.</p>
-          <a class="paper-button" href="tarefa.html">Criar tarefa</a>
+          <h2>Seu grimório está vazio. Aceite uma missão para começar.</h2>
+
+          <a class="paper-button" href="tarefa.html">Nova missão</a>
         </div>
         <div id="task-list" class="task-list"></div>
       </section>
@@ -54,17 +54,20 @@
         <p>Projeto educacional inspirado no universo de Harry Potter.</p>
       </footer>
     </main>
-    
+
     <dialog id="delete-dialog" aria-labelledby="delete-heading" aria-describedby="delete-description">
       <form method="dialog">
-        <h2 id="delete-heading">Excluir tarefa?</h2>
+        <h2 id="delete-heading">Abandonar missão?</h2>
         <p id="delete-description">Esta ação não pode ser desfeita. Tarefa: <strong id="delete-title"></strong></p>
         <div class="actions">
           <button class="paper-button" value="cancel" autofocus>Cancelar</button>
-          <button class="paper-button danger" value="delete">Excluir tarefa</button>
+          <button class="paper-button danger" value="delete">Remover</button>
         </div>
       </form>
     </dialog>
     <script type="module" src="js/home.js"></script>
-  </body>
+      <nav class="bottom-nav" aria-label="Navegação inferior">
+      <a href="inicio.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5c3-1.4 6-.8 9 1v14c-3-1.8-6-2.4-9-1zm18 0c-3-1.4-6-.8-9 1v14c3-1.8 6-2.4 9-1z"/><path d="M12 6.5v14M6 9h2m-2 3h2m8-3h2m-2 3h2"/></svg><span>Missões</span></a>
+      <a href="perfil.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c.6-4 2.8-6 6.5-6s5.9 2 6.5 6z"/></svg><span>Aventureiro</span></a>
+    </nav>  </body>
 </html>

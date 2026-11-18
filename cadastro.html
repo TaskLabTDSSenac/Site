@@ -7,8 +7,9 @@
     <title>Criar conta · TaskLab</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body>
-    <div class="shell">
+  <body class="register-page">
+    <header class="register-appbar"><a href="index.html" aria-label="Voltar ao login">←</a><span>Criar personagem</span></header>
+  <div class="shell">
       <aside class="intro">
         <a class="brand" href="index.html" aria-label="TaskLab, início">
           <svg class="emblem" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
@@ -49,7 +50,7 @@
           <div class="card-ornament" aria-hidden="true">
             <span></span><svg viewBox="0 0 24 24" fill="none"><path d="m12 2 2.7 6.6L22 12l-7.3 3.4L12 22l-2.7-6.6L2 12l7.3-3.4Z" stroke="currentColor"/></svg><span></span>
           </div>
-          <h1 id="title">Sua jornada começa aqui</h1>
+          <h1 id="title">Sua lenda começa aqui</h1>
           <p class="muted">Crie sua conta e organize suas missões em Hogwarts.</p>
           <div id="message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
           <form>
@@ -64,7 +65,7 @@
             <div class="form-field">
               <label for="password">Senha</label>
               <div class="password-wrap">
-                <input id="password" name="password" type="password" required minlength="6" maxlength="128" autocomplete="new-password" aria-describedby="password-hint">
+                <input id="password" name="password" type="password" required minlength="8" maxlength="128" autocomplete="new-password" aria-describedby="password-hint">
                 <button class="toggle" type="button" data-toggle-password="password" aria-controls="password" aria-pressed="false" aria-label="Mostrar ou ocultar senha">Mostrar</button>
               </div>
               <small id="password-hint" class="hint">Use entre 8 e 128 caracteres.</small>
@@ -76,7 +77,7 @@
                 <button class="toggle" type="button" data-toggle-password="confirm_password" aria-controls="confirm_password" aria-pressed="false" aria-label="Mostrar ou ocultar confirmação da senha">Mostrar</button>
               </div>
             </div>
-            <button class="primary" type="submit">Criar conta</button>
+            <button class="primary" type="submit">Criar personagem</button>
           </form>
           <p class="form-footer">Já tem uma conta? <a href="index.html">Voltar ao login</a></p>
         </section>

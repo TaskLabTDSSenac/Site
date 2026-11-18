@@ -19,13 +19,13 @@ async function checkSession() {
       clearToken();
       showMessage(message, 'Sua sessão expirou. Faça login novamente.');
     } else showMessage(message, error.message);
-  } finally { button.disabled = false; button.textContent = 'Entrar'; }
+  } finally { button.disabled = false; button.textContent = 'Entrar na aventura'; }
 }
 form.addEventListener('submit', async event => {
   event.preventDefault();
   if (button.disabled || !form.reportValidity()) return;
   button.disabled = true;
-  button.textContent = 'Entrando…';
+  button.textContent = 'Entrando na aventura…';
   showMessage(message, '');
   try {
     const result = await request('/auth/login', {
@@ -38,6 +38,6 @@ form.addEventListener('submit', async event => {
     form.password.value = '';
     window.location.replace('inicio.html');
   } catch (error) { showMessage(message, error.message); }
-  finally { button.disabled = false; button.textContent = 'Entrar'; }
+  finally { button.disabled = false; button.textContent = 'Entrar na aventura'; }
 });
 checkSession();

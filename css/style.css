@@ -264,3 +264,97 @@ dialog p { overflow-wrap: anywhere; }
   .header-session { width: 100%; justify-content: space-between; }
   #header-user { max-width: 210px; }
 }
+
+/* Paridade visual com o aplicativo Flutter TaskLab. */
+@font-face { font-family: TaskLabText; src: url('../assets/fonts/roboto-regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: TaskLabText; src: url('../assets/fonts/roboto-bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+@font-face { font-family: TaskLabTitle; src: url('../assets/fonts/LibreBaskerville.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+:root { --night:#1b0b12; --night-light:#32101b; --gold:#c7a04b; --gold-bright:#efd181; --paper:#f4e8d1; --paper-light:#fff9ed; --ink:#30251f; --muted:#716052; --line:#c9b991; --error:#b45345; --success:#315333; font-family:TaskLabText,Arial,sans-serif; }
+body { background:var(--night); color:var(--paper); }
+.shell { display:block; max-width:none; min-height:100vh; }
+.intro { min-height:0; padding:18px 16px 0; align-items:center; justify-content:flex-start; }
+.brand { flex-direction:column; align-items:center; gap:0; }
+.brand::before { content:'20'; display:grid; place-items:center; width:42px; height:42px; margin-bottom:2px; clip-path:polygon(50% 0,96% 28%,79% 89%,21% 89%,4% 28%); border:0; background:var(--forest,#481827); color:var(--gold-bright); font:700 11px TaskLabText,Arial,sans-serif; filter:drop-shadow(0 0 1px var(--gold)); }
+.emblem { display:none; }
+.brand-text { font:34px/1.15 TaskLabTitle,Georgia,serif; letter-spacing:0; color:var(--gold); }
+.brand small { margin-top:2px; font:14px/1.35 TaskLabText,Arial,sans-serif; letter-spacing:0; color:var(--paper); }
+.intro-copy,.intro-footer,.card-ornament { display:none; }
+.form-area { padding:20px 16px 36px; align-items:flex-start; }
+.card { width:min(100%,560px); max-width:560px; padding:24px; border-radius:18px; box-shadow:0 4px 14px #0003; }
+.card h1 { font:400 27px/1.25 TaskLabTitle,Georgia,serif; text-align:left; letter-spacing:0; margin:0 0 10px; }
+.card>.muted { text-align:left; margin-bottom:16px; color:var(--ink); }
+.form-field { margin-bottom:14px; }
+label { font-weight:400; margin:0 0 4px; }
+input,textarea { min-height:48px; border-radius:12px; border-color:#c9b991; padding:12px 16px; background:var(--paper-light); font:16px TaskLabText,Arial,sans-serif; }
+textarea { min-height:136px; }
+input:focus,textarea:focus { border-color:var(--gold); outline-color:var(--gold); }
+.password-wrap input { padding-right:84px; }
+.toggle { color:#9a5366; }
+.primary { min-height:50px; border:0; border-radius:12px; background:var(--gold); color:var(--night); box-shadow:none; font-weight:700; }
+.primary:hover { background:#d5b362; border-color:transparent; }
+.secondary { border-radius:12px; background:#481827; color:var(--paper); border-color:var(--gold); }
+.paper-button { min-height:44px; border:0; border-radius:12px; background:transparent; color:#481827; padding:9px 12px; font:500 14px TaskLabText,Arial,sans-serif; }
+.paper-button:hover { background:#c7a04b22; }
+.danger { color:#8f3030; }
+.notice { border:0; border-radius:8px; padding:12px; margin:12px 0; }
+.notice[data-kind="success"] { background:#e2e9d4; color:#315333; }
+.form-footer { margin-top:16px; font-size:14px; }
+.form-footer a { color:#481827; font-weight:400; }
+.hint { font-size:12px; }
+.register-appbar { display:none; }
+body.register-page .intro .brand { display:none; }
+body.register-page .brand::before { display:none; }
+body.register-page .register-appbar { display:flex; align-items:center; gap:24px; height:56px; padding:0 16px; color:var(--gold-bright); font:400 20px TaskLabTitle,Georgia,serif; }
+.register-appbar a,.back-link { color:var(--gold-bright); text-decoration:none; font:24px TaskLabText,Arial,sans-serif; }
+body.register-page .form-area { padding-top:8px; }
+body.register-page .card>.muted,body.register-page .form-footer { display:none; }
+.topbar.app-topbar { max-width:none; min-height:64px; margin:0; padding:8px 16px; border:0; background:var(--night); display:grid; grid-template-columns:1fr auto; grid-template-rows:auto auto; column-gap:12px; row-gap:0; align-items:center; }
+.app-topbar .brand,.app-topbar nav { display:none; }
+.app-topbar::before { content:'Crônicas do Grimório'; grid-column:1; grid-row:1; color:var(--gold-bright); font:400 20px/1.2 TaskLabTitle,Georgia,serif; }
+.header-session { display:contents; }
+#header-user { grid-column:1; grid-row:2; max-width:none; color:var(--paper); font-size:13px; }
+.app-topbar #logout { grid-column:2; grid-row:1 / span 2; min-height:40px; padding:8px 14px; }
+.app-workspace { width:100%; max-width:100%; margin:14px auto 90px; padding:0 16px; }
+.workspace h1 { margin:0 0 18px; color:#fff; font:400 27px/1.25 TaskLabTitle,Georgia,serif; }
+.page-heading { display:block; }
+.page-heading .eyebrow,.page-heading .muted { display:none; }
+.page-heading .primary { position:fixed; z-index:5; right:16px; bottom:86px; width:auto; min-height:52px; padding:12px 18px; border-radius:14px; box-shadow:0 5px 14px #0005; text-decoration:none; }
+.task-list { display:grid; grid-template-columns:minmax(0,1fr); gap:0; margin-top:10px; }
+.task-card { min-width:0; padding:16px; border:1px solid var(--gold); border-radius:18px; background:var(--paper); box-shadow:none; }
+.task-card h2,.task-detail h2,.account-card h2 { margin:8px 0; font:400 23px/1.3 TaskLabTitle,Georgia,serif; }
+.task-summary { margin:0 0 8px; font:14px/1.4 TaskLabText,Arial,sans-serif; color:var(--ink); }
+.status { border-radius:9px; padding:5px 10px; }
+.status.pending,.status.done { background:#f3e8d1; color:#716052; border-color:#c9b991; }
+.empty-state { margin-top:8px; padding:24px; text-align:left; }
+.empty-state h2 { font:400 17px TaskLabText,Arial,sans-serif; }
+.empty-state .paper-button,.home-footer { display:none; }
+.task-card .actions { gap:2px; }
+.task-card .paper-button { padding:8px 10px; }
+.bottom-nav { position:fixed; z-index:6; left:0; right:0; bottom:0; height:64px; display:grid; grid-template-columns:1fr 1fr; background:#481827; box-shadow:0 -2px 8px #0002; }
+.bottom-nav a { display:flex; align-items:center; justify-content:center; flex-direction:column; gap:2px; color:#f4e8d1b8; text-decoration:none; font:12px TaskLabText,Arial,sans-serif; }
+.bottom-nav a[aria-current="page"] { color:var(--gold-bright); font-weight:700; }
+.bottom-nav svg { width:21px; height:21px; fill:none; stroke:currentColor; stroke-width:1.8; }
+.profile-grid { grid-template-columns:minmax(0,1fr); gap:12px; }
+.profile-grid .account-card,.account-card { margin-top:8px; padding:20px; border-radius:18px; box-shadow:none; }
+.profile-grid .account-card h2 { font:400 27px/1.25 TaskLabTitle,Georgia,serif; }
+.editor { max-width:640px; margin:0 auto; }
+.task-detail { max-width:640px; margin:0 auto; }
+.task-detail .actions { margin-top:16px; }
+.dates { gap:12px; padding:14px 0; }
+dialog { border-radius:18px; padding:24px; }
+@media (max-width:600px) { .intro{padding-top:14px}.brand-text{font-size:32px}.card{padding:20px}.form-area{padding:16px 16px 28px}.app-workspace{padding:0 8px;margin-top:10px}.task-card{padding:14px}.profile-grid .account-card,.account-card{padding:18px} }body.home-page .app-topbar #logout,body.profile-page .app-topbar #logout,body.task-form-page .app-topbar #logout,body.task-details-page .app-topbar #logout { display:none; }
+body.task-form-page .app-topbar::before { content:attr(data-page-title); grid-column:2; grid-row:1 / span 2; }
+body.task-details-page .app-topbar::before { content:'Pergaminho da missão'; grid-column:2; grid-row:1 / span 2; }
+.appbar-back { display:none; }
+body.task-form-page .appbar-back,body.task-details-page .appbar-back { display:flex; align-items:center; grid-column:1; grid-row:1 / span 2; color:var(--gold-bright); text-decoration:none; font:24px TaskLabText,Arial,sans-serif; }
+body.task-form-page .page-heading,body.task-details-page #content > .eyebrow,body.task-details-page #content > h1,body.profile-page #content > h1 { display:none; }
+body.task-form-page .app-topbar::before { content:attr(data-page-title); grid-column:2; grid-row:1 / span 2; }
+body.task-details-page .app-topbar::before { content:'Pergaminho da missão'; grid-column:2; grid-row:1 / span 2; }
+.appbar-back { display:none; }
+body.task-form-page .appbar-back,body.task-details-page .appbar-back { display:flex; align-items:center; grid-column:1; grid-row:1 / span 2; color:var(--gold-bright); text-decoration:none; font:24px TaskLabText,Arial,sans-serif; }
+body.task-form-page .page-heading,body.task-details-page #content > .eyebrow,body.task-details-page #content > h1,body.profile-page #content > h1 { display:none; }
+
+body.task-form-page .app-topbar #header-user,body.task-details-page .app-topbar #header-user { display:none; }
+
+:root { --forest:#481827; }
+body.task-form-page #content > .eyebrow,body.task-form-page #content > #page-title,body.profile-page #content > .eyebrow { display:none; }

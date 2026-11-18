@@ -7,7 +7,7 @@
     <title>Meu perfil · TaskLab</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body>
+  <body class="profile-page">
     <header class="topbar app-topbar">
       <a class="brand" href="inicio.html" aria-label="TaskLab, início">
           <svg class="emblem" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
@@ -23,7 +23,7 @@
       </nav>
       <div class="header-session">
         <span id="header-user"></span>
-        <button id="logout" class="secondary" type="button">Sair</button>
+
       </div>
     </header>
     <main class="workspace app-workspace">
@@ -50,7 +50,8 @@
               <label for="email">E-mail</label>
               <input id="email" name="email" type="email" required maxlength="255" autocomplete="email">
             </div>
-            <button id="save-profile" class="primary" type="submit" disabled aria-describedby="profile-pending">Salvar dados</button>
+                        <button id="save-profile" class="primary" type="submit" disabled aria-describedby="profile-pending">Salvar dados</button>
+            <button id="logout" class="secondary" type="button">Sair</button>
           </form>
           <form id="password-form" class="account-card">
             <h2>Alterar senha</h2>
@@ -87,7 +88,10 @@
         <p>Projeto educacional inspirado no universo de Harry Potter.</p>
       </footer>
     </main>
-    
+
     <script type="module" src="js/profile.js"></script>
-  </body>
+      <nav class="bottom-nav" aria-label="Navegação inferior">
+      <a href="inicio.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5c3-1.4 6-.8 9 1v14c-3-1.8-6-2.4-9-1zm18 0c-3-1.4-6-.8-9 1v14c3-1.8 6-2.4 9-1z"/><path d="M12 6.5v14M6 9h2m-2 3h2m8-3h2m-2 3h2"/></svg><span>Missões</span></a>
+      <a href="perfil.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c.6-4 2.8-6 6.5-6s5.9 2 6.5 6z"/></svg><span>Aventureiro</span></a>
+    </nav>  </body>
 </html>

@@ -16,7 +16,7 @@ async function refresh() {
   document.getElementById('task-title').textContent = task.title;
   document.getElementById('task-description').textContent = task.description ?? 'Sem descrição';
   const status = document.getElementById('task-status');
-  status.textContent = task.completed ? 'Concluída' : 'Pendente';
+  status.textContent = task.completed ? 'Concluída' : 'Em andamento';
   status.className = `status ${task.completed ? 'done' : 'pending'}`;
   document.getElementById('created-at').textContent = date(task.created_at);
   document.getElementById('updated-at').textContent = date(task.updated_at);
