@@ -14,13 +14,13 @@ form.addEventListener('submit', async event => {
     form.elements.namedItem('name').focus();
     return;
   }
-  if (password.length < 6 || password.length > 128) {
+  if (password.length < 8 || password.length > 128) {
     showMessage(message, 'A senha deve ter entre 8 e 128 caracteres.');
     form.password.focus();
     return;
   }
   button.disabled = true;
-  button.textContent = 'Criando conta…';
+  button.textContent = 'Criando personagem…';
   showMessage(message, '');
   try {
     await request('/auth/register', { method: 'POST', data: {
@@ -31,5 +31,5 @@ form.addEventListener('submit', async event => {
     form.reset();
     window.location.replace('index.html');
   } catch (error) { showMessage(message, error.message); }
-  finally { button.disabled = false; button.textContent = 'Criar conta'; }
+  finally { button.disabled = false; button.textContent = 'Criar personagem'; }
 });

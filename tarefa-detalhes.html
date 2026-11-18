@@ -7,8 +7,8 @@
     <title>Detalhes da tarefa · TaskLab</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body>
-    <header class="topbar app-topbar">
+  <body class="task-details-page">
+    <header class="topbar app-topbar"><a class="appbar-back" href="inicio.html" aria-label="Voltar às missões">←</a>
       <a class="brand" href="inicio.html" aria-label="TaskLab, início">
           <svg class="emblem" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
             <path d="M32 3 56 16v30L32 61 8 46V16Z" stroke="currentColor"/>
@@ -43,9 +43,9 @@
             <div><dt>Atualizada em</dt><dd id="updated-at"></dd></div>
           </dl>
           <div id="task-actions" class="actions">
-            <a id="edit-task" class="paper-button" href="tarefa.html">Editar</a>
-            <button id="complete-task" class="paper-button" type="button">Concluir</button>
-            <button id="delete-task" class="paper-button danger" type="button">Excluir</button>
+            <a id="edit-task" class="paper-button" href="tarefa.html">Editar missão</a>
+            <button id="complete-task" class="paper-button" type="button">Concluir missão</button>
+            <button id="delete-task" class="paper-button danger" type="button">Remover do grimório</button>
             <a class="paper-button" href="inicio.html">Voltar</a>
           </div>
         </article>
@@ -58,11 +58,11 @@
     
     <dialog id="delete-dialog" aria-labelledby="delete-heading" aria-describedby="delete-description">
       <form method="dialog">
-        <h2 id="delete-heading">Excluir tarefa?</h2>
+        <h2 id="delete-heading">Abandonar missão?</h2>
         <p id="delete-description">Esta ação não pode ser desfeita. Tarefa: <strong id="delete-title"></strong></p>
         <div class="actions">
           <button class="paper-button" value="cancel" autofocus>Cancelar</button>
-          <button class="paper-button danger" value="delete">Excluir tarefa</button>
+          <button class="paper-button danger" value="delete">Remover</button>
         </div>
       </form>
     </dialog>

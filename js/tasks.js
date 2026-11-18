@@ -25,17 +25,17 @@ async function refresh() {
     document.getElementById('empty').hidden = tasks.length !== 0;
     for (const task of tasks) {
       const card = element('article', undefined, 'task-card');
-      card.append(element('span', task.completed ? 'Concluída' : 'Pendente', `status ${task.completed ? 'done' : 'pending'}`));
+      card.append(element('span', task.completed ? 'Concluída' : 'Em andamento', `status ${task.completed ? 'done' : 'pending'}`));
       card.append(element('h2', task.title));
       const description = task.description || 'Sem descrição';
       card.append(element('p', description.length > 180 ? description.slice(0, 180) + '…' : description, 'task-summary'));
       const actions = element('div', undefined, 'actions');
-      for (const [label, url] of [['Visualizar', 'tarefa-detalhes.html'], ['Editar', 'tarefa.html']]) {
+      for (const [label, url] of [['Abrir pergaminho', 'tarefa-detalhes.html'], ['Editar missão', 'tarefa.html']]) {
         const link = element('a', label, 'paper-button');
         link.href = `${url}?id=${encodeURIComponent(task.id)}`;
         actions.append(link);
       }
-      for (const [kind, label] of [['complete', 'Concluir'], ['delete', 'Excluir']]) {
+      for (const [kind, label] of [['complete', 'Concluir missão'], ['delete', 'Remover do grimório']]) {
         const button = element('button', label, kind === 'delete' ? 'paper-button danger' : 'paper-button');
         button.type = 'button';
         button.addEventListener('click', () => runTaskAction(kind, task, actions, message, refresh, async () => {

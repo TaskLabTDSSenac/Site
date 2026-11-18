@@ -11,7 +11,8 @@ export function mountProtected(load) {
   const message = document.getElementById('message');
   const retry = document.getElementById('retry');
   let busy = false;
-  document.getElementById('logout').addEventListener('click', logout);
+  const logoutButton = document.getElementById('logout');
+  if (logoutButton) logoutButton.addEventListener('click', logout);
   async function start() {
     if (busy) return;
     content.hidden = true;
