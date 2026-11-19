@@ -1,5 +1,8 @@
 # TaskLab Web — Seu grimório de tarefas
 
+Atualização de 13/11/2026: os defeitos didáticos foram corrigidos. Cadastro exige nome com pelo menos 3 caracteres e senha com pelo menos 8. Cadastro e troca de senha exigem confirmação igual à senha. Títulos são validados após remover espaços nas extremidades, entre 3 e 150 caracteres. A API persiste a descrição, rejeita conclusão repetida e remove tarefas excluídas. Registros anteriores foram preservados.
+
+
 Frontend didático em HTML, CSS e JavaScript puro, sem frameworks, bundlers,
 dependência de Node.js, CDNs ou imagens externas. Projeto educacional inspirado
 no universo de Harry Potter, sem vínculo oficial.

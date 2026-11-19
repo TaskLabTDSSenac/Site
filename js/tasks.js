@@ -35,7 +35,8 @@ async function refresh() {
         link.href = `${url}?id=${encodeURIComponent(task.id)}`;
         actions.append(link);
       }
-      for (const [kind, label] of [['complete', 'Concluir missão'], ['delete', 'Remover do grimório']]) {
+      for (const [kind, label] of [['complete', 'Concluir'], ['delete', 'Excluir']]) {
+        if (kind === 'complete' && task.completed) continue;
         const button = element('button', label, kind === 'delete' ? 'paper-button danger' : 'paper-button');
         button.type = 'button';
         button.addEventListener('click', () => runTaskAction(kind, task, actions, message, refresh, async () => {
