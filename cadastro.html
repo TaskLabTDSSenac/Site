@@ -36,8 +36,8 @@
           <div id="message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
           <form>
             <div class="form-field">
-              <label for="name">Nome do feiticeiro</label>
-              <input id="name" name="name" required maxlength="150" autocomplete="name" placeholder="Informe seu nome">
+              <label for="name">Nome</label>
+              <input id="name" name="name" required minlength="3" maxlength="150" autocomplete="name" placeholder="Como podemos chamar você?">
             </div>
             <div class="form-field">
               <label for="email">E-mail</label>
@@ -46,7 +46,7 @@
             <div class="form-field">
               <label for="password">Senha</label>
               <div class="password-wrap">
-                <input id="password" name="password" type="password" required minlength="6" maxlength="128" autocomplete="new-password" aria-describedby="password-hint">
+                <input id="password" name="password" type="password" required minlength="8" maxlength="128" autocomplete="new-password" aria-describedby="password-hint">
                 <button class="toggle" type="button" data-toggle-password="password" aria-controls="password" aria-pressed="false" aria-label="Mostrar ou ocultar senha">Mostrar</button>
               </div>
               <small id="password-hint" class="hint">Use entre 8 e 128 caracteres.</small>

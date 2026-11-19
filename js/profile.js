@@ -36,7 +36,7 @@ mountProtected(async user => {
 personal.addEventListener('submit', async event => {
   event.preventDefault();
   if (saveProfile.disabled || !PROFILE_UPDATE_AVAILABLE) return;
-  if (name.value.trim().length < 1 || name.value.trim().length > 150) name.setCustomValidity('Informe um nome entre 1 e 150 caracteres.');
+  if (name.value.trim().length < 3 || name.value.trim().length > 150) name.setCustomValidity('Informe um nome entre 3 e 150 caracteres.');
   if (!personal.reportValidity()) return;
   setBusy(saveProfile, true, 'Salvar dados');
   showMessage(profileMessage, '');
@@ -49,6 +49,7 @@ personal.addEventListener('submit', async event => {
 passwords.addEventListener('submit', async event => {
   event.preventDefault();
   if (savePassword.disabled) return;
+  confirm.setCustomValidity(next.value === confirm.value ? '' : 'A confirmação deve ser igual à nova senha.');
   if (!passwords.reportValidity()) return;
   setBusy(savePassword, true, 'Alterar senha', 'Alterando…');
   showMessage(passwordMessage, '');
