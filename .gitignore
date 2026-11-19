@@ -1,0 +1,13 @@
+node_modules/
+test-results/
+playwright-report/
+blob-report/
+.env
+.env.*
+!.env.example
+playwright/.auth/
+.auth/
+storage-state*.json
+storageState*.json
+credentials*.json
+session*.json
