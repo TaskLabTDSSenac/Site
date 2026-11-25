@@ -1,0 +1,15 @@
+[33mcommit 9888138bb7595c3ec8cdbe00edb5631056040b5c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/Romulo[m[33m)[m
+Author: Romulo <romulogmelo@gmail.com>
+Date:   Tue Nov 24 21:12:31 2026 -0300
+
+    Melhorias no layout Web e Mobile
+
+ cadastro.html        | 60 [32m+++++++++++++++++[m[31m-------------------[m
+ css/style.css        | 87 [32m++++++++++++++++++++++++++++++++++++++++++++++++++++[m
+ index.html           | 62 [32m++++++++++++++++++[m[31m-------------------[m
+ inicio.html          | 22 [32m++++++[m[31m-------[m
+ js/task-form.js      |  2 [32m+[m[31m-[m
+ perfil.html          | 14 [32m+++[m[31m------[m
+ tarefa-detalhes.html | 14 [32m+++[m[31m------[m
+ tarefa.html          | 16 [32m++++[m[31m------[m
+ 8 files changed, 170 insertions(+), 107 deletions(-)
