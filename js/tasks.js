@@ -30,8 +30,8 @@ async function refresh() {
       const description = task.description || 'Sem descrição';
       card.append(element('p', description.length > 180 ? description.slice(0, 180) + '…' : description, 'task-summary'));
       const actions = element('div', undefined, 'actions');
-      for (const [label, url] of [['Visualizar', 'tarefa-detalhes.html'], ['Editar', 'tarefa.html']]) {
-        const link = element('a', label, 'paper-button');
+      for (const [label, url, style] of [['Visualizar', 'tarefa-detalhes.html', 'task-link-primary'], ['Editar', 'tarefa.html', 'task-link-secondary']]) {
+        const link = element('a', label, `paper-button ${style}`);
         link.href = `${url}?id=${encodeURIComponent(task.id)}`;
         actions.append(link);
       }
