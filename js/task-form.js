@@ -19,7 +19,7 @@ title.addEventListener('input', counts);
 description.addEventListener('input', counts);
 mountProtected(async () => {
   id = taskId(false);
-  document.getElementById('page-title').textContent = id ? 'Editar uma missão' : 'Uma nova missão';
+  document.getElementById('page-title').textContent = id ? 'Ajustar o plano' : 'Um novo plano na pista';
   if (id) {
     title.removeAttribute('maxlength');
     const task = await getTask(id);

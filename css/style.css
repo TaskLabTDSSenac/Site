@@ -264,3 +264,90 @@ dialog p { overflow-wrap: anywhere; }
   .header-session { width: 100%; justify-content: space-between; }
   #header-user { max-width: 210px; }
 }
+/* Ride & Rock: identidade de garagem, asfalto e metal. */
+:root {
+  --night: #111212; --night-light: #222323;
+  --gold: #ef7b40; --gold-bright: #ffa56e;
+  --paper: #222323; --paper-light: #292a29;
+  --ink: #f3eee5; --muted: #bab6af; --line: #484641;
+  --error: #ffb8a5; --success: #b2d6b2;
+  --radius: 4px; --shadow: 0 18px 50px #0003;
+  --serif: Impact, 'Arial Narrow', 'Segoe UI', sans-serif;
+}
+body { background: radial-gradient(ellipse at 10% 10%, #b8522019, transparent 50%), repeating-linear-gradient(135deg, #ffffff02 0 1px, transparent 1px 7px), #111212; }
+a { color: #ffa56e; }
+::selection { background: #f08042; color: #111; }
+:focus-visible { outline-color: #ff9b5f; }
+.shell { max-width: 1600px; grid-template-columns: 1.15fr 1fr; }
+.intro { padding: 44px clamp(28px, 5vw, 80px); border-right: 1px solid #ffffff12; overflow: hidden; }
+.brand { gap: 12px; color: #f18547; }
+.brand-text { color: #f3eee5; font-weight: 900; font-size: 34px; text-transform: uppercase; letter-spacing: -1px; }
+.brand small { color: #b8b3aa; font-size: 9px; font-weight: 600; letter-spacing: 2px; }
+.emblem { width: 48px; height: 54px; }
+.intro-copy { margin: 48px 0 30px; }
+.eyebrow { color: #f99b61; font-size: 10px; letter-spacing: 2px; }
+.intro h2 { font: 900 clamp(52px, 6.6vw, 96px)/.98 var(--serif); text-transform: uppercase; letter-spacing: -2px; margin: 24px 0; color: #f3eee5; }
+.intro h2::after { content: ''; display: block; width: 65px; height: 5px; background: #ef7b40; margin-top: 26px; transform: skewX(-25deg); }
+.intro p { font-size: 15px; line-height: 1.8; color: #b8b5ae; }
+.motorcycle { width: 100%; max-height: 310px; display: block; margin: 10px 0; }
+.scene-caption { text-align: left; color: #b8b3aa; font: 600 9px/1.6 var(--sans); letter-spacing: 2px; }
+.intro-footer { color: #aaa59c; border-top: 1px solid #ffffff19; padding-top: 18px; font-size: 10px; }
+.form-area { padding: 48px 32px; }
+.card, .account-card, .task-card { background: #222323; border: 1px solid #45433e; box-shadow: var(--shadow); }
+.card { max-width: 450px; padding: 42px 36px; border-top: 3px solid #ef7b40; }
+.card-ornament { color: #aaa59c; margin-bottom: 30px; gap: 10px; }
+.card-ornament b { font: 600 9px var(--sans); letter-spacing: 1.6px; white-space: nowrap; }
+.card-ornament span { width: 24px; background: #676056; }
+.card h1 { font: 800 40px/1.1 var(--serif); text-transform: uppercase; letter-spacing: -.5px; text-align: left; }
+.card > .muted { text-align: left; margin: 14px 0 28px; line-height: 1.7; }
+label { color: #e2ddd4; font-size: 12px; }
+input, textarea { color: #f3eee5; background: #171818; border: 1px solid #55514b; border-radius: 3px; min-height: 50px; }
+input::placeholder { color: #aaa59c; }
+input:focus, textarea:focus { border-color: #f18547; }
+input[readonly] { background: #303130; }
+.toggle { color: #ffa56e; }
+.toggle:hover { background: #ffffff0a; }
+.primary { background: #ef7b40; border: 1px solid #ef7b40; color: #171410; border-radius: 3px; box-shadow: none; font-weight: 800; }
+.primary:hover { background: #ffa56e; border-color: #ffa56e; }
+.primary:disabled { background: #59524b; border-color: #71675c; color: #e1d7ca; }
+.secondary, .paper-button { background: #292a29; border-color: #6d6153; color: #f3d2ba; border-radius: 3px; }
+.secondary:hover, .paper-button:hover { background: #3a322b; border-color: #ef7b40; }
+.form-footer { border-top: 1px solid #ffffff14; padding-top: 22px; }
+.topbar { background: #171818; border-bottom: 1px solid #ef7b4040; }
+.app-topbar { max-width: none; padding: 22px max(24px, calc((100% - 1200px) / 2)); }
+.app-topbar nav a { text-decoration: none; color: #c9c3b9; padding: 10px 0; border-bottom: 2px solid transparent; }
+.app-topbar nav a[aria-current='page'] { color: #ffa56e; border-bottom-color: #ef7b40; }
+#header-user { color: #c9c3b9; }
+.workspace h1 { color: #f3eee5; font-weight: 800; text-transform: uppercase; letter-spacing: -.5px; }
+.page-heading { border-bottom: 1px solid #ffffff1c; padding-bottom: 28px; margin-bottom: 28px; }
+.page-heading .muted, .workspace > section > .muted { color: #bab6af; }
+.task-card { border-top: 3px solid #ef7b40; padding: 28px; }
+.task-card h2, .account-card h2 { font-family: var(--sans); font-weight: 750; font-size: 23px; }
+.task-card .actions { border-top: 1px solid #ffffff18; padding-top: 20px; }
+.status { border-radius: 2px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.status.pending { background: #ed7c401a; color: #ffb887; border-color: #b47149; }
+.status.done, .connected { background: #263b2a; color: #c1e2bd; border-color: #628064; }
+.notice { background: #3c2521; color: #ffcebc; border-color: #c27d66; }
+.notice[data-kind='success'] { background: #263b2a; color: #c1e2bd; border-color: #628064; }
+.pending-note { background: #3b3022; color: #f2d1a5; border-color: #dc9a4f; }
+.danger { color: #ffb8a5; border-color: #a16d5e; }
+.account-note { border-color: #575149; }
+.avatar { background: #302b24; color: #ffa56e; border-color: #ac7349; border-radius: 4px; }
+.home-footer { color: #aaa59c; margin-top: 40px; }
+dialog { background: #222323; }
+dialog::backdrop { background: #000b; }
+@media (max-width: 800px) {
+  .shell { display: block; }
+  .intro { padding: 26px 24px; align-items: flex-start; border-right: 0; border-bottom: 1px solid #ffffff15; }
+  .intro-copy { display: block; margin: 30px 0 0; }
+  .intro h2 { font-size: clamp(44px, 10vw, 68px); }
+  .intro h2 br { display: none; }
+  .intro p { font-size: 13px; }
+  .motorcycle, .scene-caption, .intro-footer { display: none; }
+  .form-area { padding: 26px 16px 40px; }
+  .card { max-width: 540px; padding: 30px 24px; }
+  .card h1 { font-size: 34px; }
+  .app-topbar { padding: 20px 16px; }
+  .brand-text { font-size: 28px; }
+  .brand small { font-size: 9px; letter-spacing: 1px; }
+}
