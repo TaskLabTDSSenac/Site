@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Arquivo Jujutsu — gerencie relatórios de missões e ocorrências sobrenaturais.">
     <title>Quadro de missões · Arquivo Jujutsu</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=dashboard-fix-2">
   </head>
-  <body>
+  <body class="missions-page">
     <header class="topbar app-topbar">
       <a class="brand" href="inicio.html" aria-label="Arquivo Jujutsu, início">
           <svg class="emblem" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
@@ -18,12 +18,12 @@
           <span class="brand-text">Arquivo Jujutsu<small>Escola Técnica de Tóquio</small></span>
         </a>
       <nav aria-label="Navegação principal">
-        <a href="inicio.html" aria-current="page">Missões</a>
-        <a href="perfil.html">Registro do feiticeiro</a>
+        <a href="inicio.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10v7H4zm10-1.5h4.5A1.5 1.5 0 0 1 20 5.5V11h-6zM4 13h6v7H5.5A1.5 1.5 0 0 1 4 18.5zm10 0h6v5.5a1.5 1.5 0 0 1-1.5 1.5H14z"/></svg>Missões</a>
+        <a href="perfil.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8a7 7 0 0 1 14 0v1H5z"/></svg>Meu perfil</a>
       </nav>
       <div class="header-session">
-        <span id="header-user"></span>
-        <button id="logout" class="secondary" type="button">Encerrar sessão</button>
+        <span class="user-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8a7 7 0 0 1 14 0v1H5z"/></svg><span id="header-user"></span></span>
+        <button id="logout" class="secondary" type="button" title="Sair da sua conta">Sair da conta</button>
       </div>
     </header>
     <main class="workspace app-workspace">
@@ -37,22 +37,22 @@
             <h1>Quadro de missões</h1>
             <p class="muted">Relatórios de campo e ocorrências amaldiçoadas sob sua responsabilidade.</p>
           </div>
-          <a class="primary fit-button" href="tarefa.html">＋ Registrar missão</a>
+          <a class="primary fit-button" href="tarefa.html" title="Criar um novo registro de missão"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Registrar missão</a>
         </div>
         <div id="task-message" class="notice" role="status" aria-live="polite" aria-atomic="true" hidden></div>
         <p id="tasks-loading" class="loading" role="status" aria-live="polite" hidden>Consultando registros de missão…</p>
         <button id="tasks-retry" class="secondary" type="button" hidden>Tentar novamente</button>
         <div id="empty" class="account-card empty-state" hidden>
-          <h2>Nenhuma missão registrada</h2>
-          <p>Registre uma ocorrência ou missão designada pela escola.</p>
-          <a class="paper-button" href="tarefa.html">＋ Registrar missão</a>
+          <div class="empty-seal" aria-hidden="true"><svg viewBox="0 0 72 72"><path d="M36 5 61 19v34L36 67 11 53V19z"/><path d="M23 27h26M23 36h26M23 45h17"/><path d="m48 48 4 4 9-10"/></svg></div>
+          <span class="eyebrow">Arquivo pronto para novos registros</span>
+          <h2>Nenhuma missão por enquanto</h2>
+          <p>Quando uma missão for registrada, ela aparecerá neste quadro. Para começar, use o botão <strong>Registrar missão</strong> no alto da página.</p>
         </div>
-        <label class="search-box" for="note-search"><span aria-hidden="true">⌕</span><input id="note-search" type="search" aria-label="Buscar missões" placeholder="Buscar nos relatórios de missão..." autocomplete="off"><span class="search-paw" aria-hidden="true">呪</span></label>
+        <label class="search-box" for="note-search"><svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="note-search" type="search" aria-label="Buscar missões pelo título ou descrição" placeholder="Buscar por título ou conteúdo do relatório" autocomplete="off"></label>
         <p id="no-results" class="muted no-results" hidden>Nenhum registro corresponde a essa busca.</p>
         <div id="task-list" class="task-list"></div>
       </section>
       <footer class="home-footer">
-        <a href="inicio.html">Voltar ao quadro de missões</a>
         <p>Arquivo confidencial · Escola Técnica de Jujutsu de Tóquio</p>
       </footer>
     </main>
