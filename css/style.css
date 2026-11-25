@@ -333,6 +333,19 @@ input[readonly] { background: #30252b; }
 .app-topbar nav a, .home-footer a { color: #efbfc1; }
 #header-user, .loading { color: #d2bfc1; }
 :focus-visible { outline-color: #ec9299; }
+.signup-callout { display: flex; align-items: center; gap: 14px; margin-top: 24px; padding: 16px; border: 1px solid #a34b5370; border-radius: 10px; background: linear-gradient(135deg, #39232d, #241a22); }
+.signup-icon { display: grid; place-items: center; flex: 0 0 42px; height: 42px; border-radius: 50%; color: #fff0d8; background: #792b38; font-size: 22px; }
+.signup-callout > div { display: grid; gap: 2px; flex: 1; }
+.signup-callout strong { color: #f6e9e8; font: 600 14px var(--serif); }
+.signup-callout > div span { color: #d0c0c2; font-size: 11px; }
+.signup-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 10px 14px; border: 1px solid #dc8588; border-radius: 6px; color: #fff3f1; background: linear-gradient(110deg, #792b38, #a84650); font-size: 13px; font-weight: 700; text-decoration: none; white-space: nowrap; box-shadow: 0 4px 14px #08050870; }
+.signup-button:hover { background: #b54e59; }
+.icon-action { gap: 8px; }
+.icon-action svg { width: 17px; height: 17px; flex: 0 0 17px; }
+.task-card .actions .icon-action { min-height: 42px; }
+.task-card .actions .icon-action[aria-label^="Excluir"] { background: #49252a; border-color: #bc7168; }
+.task-card .actions .icon-action[aria-label^="Concluir"] { background: #26352a; border-color: #6c9473; }
+@media (max-width: 480px) { .signup-callout { flex-wrap: wrap; } .signup-callout > div { min-width: calc(100% - 60px); } .signup-button { width: 100%; } }
 @media (prefers-reduced-motion: no-preference) {
   .primary, .secondary, .paper-button, input, textarea, a { transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease; }
 }

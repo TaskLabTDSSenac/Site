@@ -14,6 +14,29 @@ function element(tag, text, className) {
   if (className) node.className = className;
   return node;
 }
+function icon(name) {
+  const paths = {
+    view: '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>',
+    edit: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/>',
+    complete: '<path d="m5 12 4 4L19 6"/>',
+    delete: '<path d="M3 6h18"/><path d="M8 6V4h8v2m3 0-1 14H6L5 6"/><path d="M10 11v5m4-5v5"/>'
+  };
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('fill', 'none');
+  svg.setAttribute('stroke', 'currentColor');
+  svg.setAttribute('stroke-width', '1.8');
+  svg.setAttribute('stroke-linecap', 'round');
+  svg.setAttribute('stroke-linejoin', 'round');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.innerHTML = paths[name];
+  return svg;
+}
+function iconButton(node, key, label) {
+  node.prepend(icon(key));
+  node.classList.add('icon-action');
+  node.setAttribute('aria-label', label);
+}
 async function refresh() {
   if (loading) return;
   loading = true;
@@ -33,12 +56,14 @@ async function refresh() {
       for (const [label, url] of [['Visualizar', 'tarefa-detalhes.html'], ['Editar', 'tarefa.html']]) {
         const link = element('a', label, 'paper-button');
         link.href = `${url}?id=${encodeURIComponent(task.id)}`;
+        iconButton(link, label === 'Visualizar' ? 'view' : 'edit', label + ' tarefa');
         actions.append(link);
       }
       for (const [kind, label] of [['complete', 'Concluir'], ['delete', 'Excluir']]) {
         if (kind === 'complete' && task.completed) continue;
         const button = element('button', label, kind === 'delete' ? 'paper-button danger' : 'paper-button');
         button.type = 'button';
+        iconButton(button, kind, label + ' tarefa');
         button.addEventListener('click', () => runTaskAction(kind, task, actions, message, refresh, async () => {
           showMessage(message, 'Tarefa excluída com sucesso.', 'success');
           await refresh();
