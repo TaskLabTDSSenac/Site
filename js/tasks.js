@@ -30,14 +30,25 @@ async function refresh() {
       const description = task.description || 'Sem descrição';
       card.append(element('p', description.length > 180 ? description.slice(0, 180) + '…' : description, 'task-summary'));
       const actions = element('div', undefined, 'actions');
-      for (const [label, url] of [['Visualizar', 'tarefa-detalhes.html'], ['Editar', 'tarefa.html']]) {
-        const link = element('a', label, 'paper-button');
+      const view = element('a', 'Visualizar', 'paper-button');
+      view.href = `tarefa-detalhes.html?id=${encodeURIComponent(task.id)}`;
+      actions.append(view);
+      for (const [label, url, icon] of [['Editar', 'tarefa.html', '✎']]) {
+        const link = element('a', undefined, 'paper-button action-button');
+        const iconNode = element('span', icon, 'action-icon');
+        iconNode.setAttribute('aria-hidden', 'true');
+        link.append(iconNode, document.createTextNode(label));
+        link.title = label;
         link.href = `${url}?id=${encodeURIComponent(task.id)}`;
         actions.append(link);
       }
       for (const [kind, label] of [['complete', 'Concluir'], ['delete', 'Excluir']]) {
-        const button = element('button', label, kind === 'delete' ? 'paper-button danger' : 'paper-button');
+        const button = element('button', undefined, `${kind === 'delete' ? 'paper-button danger' : 'paper-button'} action-button`);
+        const iconNode = element('span', kind === 'delete' ? '×' : '✓', 'action-icon');
+        iconNode.setAttribute('aria-hidden', 'true');
+        button.append(iconNode, document.createTextNode(label));
         button.type = 'button';
+        button.title = label;
         button.addEventListener('click', () => runTaskAction(kind, task, actions, message, refresh, async () => {
           showMessage(message, 'Tarefa excluída com sucesso.', 'success');
           await refresh();

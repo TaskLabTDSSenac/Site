@@ -225,6 +225,9 @@ input:focus { border-color: #795a29; }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .paper-button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 9px 14px; border: 1px solid #9b8053; border-radius: 6px; background: #fff6e4; color: #62471c; text-decoration: none; font: 600 13px var(--sans); cursor: pointer; }
 .paper-button:hover { background: #e8d7b4; }
+.action-button { gap: 7px; }
+.action-icon { font-size: 17px; line-height: 1; }
+.danger .action-icon { font-size: 21px; }
 .paper-button:disabled { opacity: .6; cursor: wait; }
 .danger { color: #852d28; border-color: #af7562; }
 .task-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 24px; }
@@ -265,17 +268,13 @@ dialog p { overflow-wrap: anywhere; }
   #header-user { max-width: 210px; }
 }
 
-/* Login: cenário oficial de GTA VI com painel escuro e acentos neon. */
+/* Login: cenário noturno do TaskLab com acentos de magia. */
 .login-page {
   color: #f5f2f3;
   background: #050505;
 }
 body.login-page {
-  background:
-    linear-gradient(90deg, #050505b8 0%, #05050555 48%, #050505a8 100%),
-    linear-gradient(0deg, #0505058c, transparent 55%),
-    url("https://www.rockstargames.com/VI/_next/static/media/Jason_Lucia_Lock_And_Load_landscape.0l9s5w7ih9p~3.jpg?akim=1&imdensity=1&imwidth=1920") center 42% / cover fixed,
-    #050505;
+  background: radial-gradient(ellipse at 18% 24%, #2a1b3a 0, transparent 42%), radial-gradient(ellipse at 78% 72%, #182b46 0, transparent 44%), #080b12;
 }
 body.login-page .shell { max-width: none; grid-template-columns: 1fr 1fr; }
 body.login-page .intro { padding: clamp(24px, 5vw, 76px); }
@@ -315,6 +314,9 @@ body.login-page .primary {
 body.login-page .primary:hover { background: #ffc4d9; border-color: #fff; }
 body.login-page .form-footer { color: #c8bfc4; }
 body.login-page .form-footer a { color: #ffadd0; }
+body.login-page .register-cta { margin-top: 20px; }
+body.login-page .register-cta a { display: inline-flex; align-items: center; gap: 8px; margin-left: 6px; padding: 9px 14px; border: 1px solid #f08ab7; border-radius: 999px; background: #f08ab71c; text-decoration: none; box-shadow: 0 0 18px #f08ab72b; }
+body.login-page .register-cta a:hover { background: #f08ab735; }
 body.login-page :focus-visible { outline-color: #ffb6d4; }
 @media (max-width: 800px) {
   body.login-page { background-attachment: scroll; }
